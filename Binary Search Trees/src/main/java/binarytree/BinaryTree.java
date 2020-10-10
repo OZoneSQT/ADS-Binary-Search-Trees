@@ -1,9 +1,9 @@
 package binarytree;
 
-public class BinaryTree {
+public class BinaryTree<AnyType> {
 
     // Returns a reference to the root
-    public BinaryTreeNode getRoot() {
+    public AnyType getRoot() {
         return null;
     }
 
@@ -23,22 +23,22 @@ public class BinaryTree {
     }
 
     // Returns an inOrder representation of the tree
-    public BinaryTreeNode inOrder() {
+    public AnyType inOrder() {
         return null;
     }
 
     // Returns an preOrder representation of the tree
-    public BinaryTreeNode preOrder() {
+    public AnyType preOrder() {
         return null;
     }
 
     // Returns an postOrder representation of the tree
-    public BinaryTreeNode postOrder() {
+    public AnyType postOrder() {
         return null;
     }
 
     // Returns an level Order representation of the tree
-    public BinaryTreeNode levelOrder() {
+    public AnyType levelOrder() {
         return null;
     }
 

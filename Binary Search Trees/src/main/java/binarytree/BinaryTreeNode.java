@@ -1,7 +1,7 @@
 package binarytree;
 
 
-public class BinaryTreeNode {
+public class BinaryTreeNode<AnyType> {
 
     public BinaryTreeNode(int i) {
     }

@@ -3,7 +3,7 @@ package binarysearchtree;
 
 import binarytree.BinaryTree;
 
-public class BinarySearchTree extends BinaryTree {
+public class BinarySearchTree<AnyType> extends BinaryTree<AnyType> {
 
     // Add an element to the tree.
     public void addElement() {
@@ -31,12 +31,12 @@ public class BinarySearchTree extends BinaryTree {
     }
 
     // Returns a reference to the minimum element of the tree
-    public BinarySearchTreeNode findMin() {
+    public AnyType findMin() {
         return null;
     }
 
     // Returns a reference to the maximum element of the tree
-    public BinarySearchTreeNode findMax() {
+    public AnyType findMax() {
         return null;
     }
 

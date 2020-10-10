@@ -2,7 +2,7 @@ package binarysearchtree;
 
 import binarytree.BinaryTreeNode;
 
-public class BinarySearchTreeNode extends BinaryTreeNode {
+public class BinarySearchTreeNode<AnyType> extends BinaryTreeNode<AnyType> {
 
     public BinarySearchTreeNode(int i) {
         super(i);
@@ -14,7 +14,7 @@ public class BinarySearchTreeNode extends BinaryTreeNode {
     }
 
     // Returns the parent of a Node
-    public BinarySearchTreeNode getParent() {
+    public AnyType getParent() {
         return null;
     }
 
