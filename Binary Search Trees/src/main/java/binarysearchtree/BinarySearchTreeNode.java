@@ -2,20 +2,25 @@ package binarysearchtree;
 
 import binarytree.BinaryTreeNode;
 
-public class BinarySearchTreeNode<AnyType> extends BinaryTreeNode<AnyType> {
-
-    public BinarySearchTreeNode(int i) {
-        super(i);
+public class BinarySearchTreeNode extends BinaryTreeNode {
+    public BinarySearchTreeNode(Object element, BinaryTreeNode parentNode) {
+        super(element, parentNode);
     }
+
+
+
+   /*
 
     // Set the parent of a Node
     public void setParent() {
-
+        this.parent = parent;
     }
 
     // Returns the parent of a Node
-    public AnyType getParent() {
-        return null;
+    public Node getParent() {
+        return parent;
     }
+
+    */
 
 }

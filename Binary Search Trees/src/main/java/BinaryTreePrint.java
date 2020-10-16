@@ -6,7 +6,8 @@ import java.util.ArrayList;
  * Class given in assignment
  */
 public class BinaryTreePrint {
-	
+
+
 	BinaryTreeNode root;
 
 	/*
@@ -20,6 +21,7 @@ public class BinaryTreePrint {
 	 * The tree must be created elsewhere (possible in a Main class).
 	 */
 
+	/*
 	public void printTree() {
 		ArrayList<BinaryTreeNode> parent = new ArrayList<BinaryTreeNode>();
 		parent.add(root);
@@ -96,5 +98,5 @@ public class BinaryTreePrint {
 
 	}
 
-	
+	*/
 }

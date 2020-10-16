@@ -3,15 +3,19 @@ package binarysearchtree;
 
 import binarytree.BinaryTree;
 
-public class BinarySearchTree<AnyType> extends BinaryTree<AnyType> {
+public class BinarySearchTree extends BinaryTree {
+    private BinarySearchTreeNode root;
 
     // Add an element to the tree.
-    public void addElement() {
+    public void addElement(BinarySearchTreeNode node){
+    }
+
+    private void insert(BinarySearchTreeNode node1, BinarySearchTreeNode node2){
 
     }
 
     // Remove an element from the three
-    public void removeElement() {
+    public void removeElement(BinarySearchTreeNode node){
 
     }
 
@@ -31,13 +35,14 @@ public class BinarySearchTree<AnyType> extends BinaryTree<AnyType> {
     }
 
     // Returns a reference to the minimum element of the tree
-    public AnyType findMin() {
+    public BinarySearchTreeNode findMin() {
         return null;
     }
 
     // Returns a reference to the maximum element of the tree
-    public AnyType findMax() {
+    public BinarySearchTreeNode findMax() {
         return null;
     }
+
 
 }

@@ -1,15 +1,21 @@
 package binarytree;
 
-public class BinaryTree<AnyType> {
+public class BinaryTree {
+    private BinaryTreeNode root;
+    private int value;
+
+    public BinaryTree() {
+        root = null;
+    }
 
     // Returns a reference to the root
-    public AnyType getRoot() {
-        return null;
+    public BinaryTreeNode getRoot() {
+        return root;
     }
 
     // Determines whether the tree is empty
     public boolean isEmpty() {
-        return false;
+        return root == null;
     }
 
     // Returns the number of elements in the tree
@@ -23,22 +29,22 @@ public class BinaryTree<AnyType> {
     }
 
     // Returns an inOrder representation of the tree
-    public AnyType inOrder() {
+    public BinaryTreeNode inOrder() {
         return null;
     }
 
     // Returns an preOrder representation of the tree
-    public AnyType preOrder() {
+    public BinaryTreeNode preOrder() {
         return null;
     }
 
     // Returns an postOrder representation of the tree
-    public AnyType postOrder() {
+    public BinaryTreeNode postOrder() {
         return null;
     }
 
     // Returns an level Order representation of the tree
-    public AnyType levelOrder() {
+    public BinaryTreeNode levelOrder() {
         return null;
     }
 
