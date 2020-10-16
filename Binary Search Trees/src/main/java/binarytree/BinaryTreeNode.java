@@ -6,19 +6,33 @@ public class BinaryTreeNode<AnyType> {
     private BinaryTreeNode leftChild, rightChild, parentNode;
 
     public BinaryTreeNode(AnyType element) {
-            this.isRoot = false;
+        this.isRoot = false;
+
+        if (element == null) {
+            throw new IllegalArgumentException("Null is not allowed");
+        } else {
             this.element = element;
+        }
     }
 
     public BinaryTreeNode(AnyType element, BinaryTreeNode parentNode) {
-            this.isRoot = false;
+        this.isRoot = false;
+        this.parentNode = parentNode;
+
+        if (element == null) {
+            throw new IllegalArgumentException("Null is not allowed");
+        } else {
             this.element = element;
-            this.parentNode = parentNode;
+        }
     }
 
     // Store the element in the Node
     public void setElement(AnyType element) {
-        this.element = element;
+        if (element == null) {
+            throw new IllegalArgumentException("Null is not allowed");
+        } else {
+            this.element = element;
+        }
     }
 
     // Returns the element from the Node
