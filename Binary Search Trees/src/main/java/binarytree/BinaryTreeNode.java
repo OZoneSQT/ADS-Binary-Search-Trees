@@ -2,11 +2,13 @@ package binarytree;
 
 public class BinaryTreeNode<AnyType> {
     boolean isRoot = true;
+    int nodeId;
     private AnyType element;
     private BinaryTreeNode leftChild, rightChild, parentNode;
 
-    public BinaryTreeNode(AnyType element) {
+    public BinaryTreeNode(int nodeId, AnyType element) {
         this.isRoot = false;
+        this.nodeId = nodeId;
 
         if (element == null) {
             throw new IllegalArgumentException("Null is not allowed");
@@ -15,8 +17,9 @@ public class BinaryTreeNode<AnyType> {
         }
     }
 
-    public BinaryTreeNode(AnyType element, BinaryTreeNode parentNode) {
+    public BinaryTreeNode(int nodeId, AnyType element, BinaryTreeNode parentNode) {
         this.isRoot = false;
+        this.nodeId = nodeId;
         this.parentNode = parentNode;
 
         if (element == null) {
@@ -70,6 +73,10 @@ public class BinaryTreeNode<AnyType> {
 
     public boolean isNodeRoot() {
         return parentNode == null;
+    }
+
+    public int getNodeId() {
+        return nodeId;
     }
 
 }

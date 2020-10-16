@@ -3,8 +3,8 @@ package binarysearchtree;
 import binarytree.BinaryTreeNode;
 
 public class BinarySearchTreeNode extends BinaryTreeNode {
-    public BinarySearchTreeNode(Object element, BinaryTreeNode parentNode) {
-        super(element, parentNode);
+    public BinarySearchTreeNode(int nodeId, Object element, BinaryTreeNode parentNode) {
+        super(nodeId, element, parentNode);
     }
 
 

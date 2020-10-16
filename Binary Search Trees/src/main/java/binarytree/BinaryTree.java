@@ -2,10 +2,8 @@ package binarytree;
 
 public class BinaryTree {
     private BinaryTreeNode root;
-    private int value;
 
     public BinaryTree() {
-        root = null;
     }
 
     // Returns a reference to the root

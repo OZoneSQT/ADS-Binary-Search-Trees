@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @EnableRuleMigrationSupport
 class BinaryTreeNodeTest {
     private BinaryTreeNode binaryTreeRootNode;
+    private int nodeId = 0;
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
@@ -18,7 +19,39 @@ class BinaryTreeNodeTest {
     @BeforeEach
     void setUp() {
         int element = 1;
-        binaryTreeRootNode = new BinaryTreeNode(element);
+        binaryTreeRootNode = new BinaryTreeNode(generateNodeId(), element);
+    }
+
+    private int generateNodeId() {
+        nodeId++;
+        return nodeId -1;
+    }
+
+    @Test
+    void getNodeIdRoot() {
+        assertEquals(0, binaryTreeRootNode.getNodeId());
+    }
+
+    @Test
+    void getNodeIdLeftChild() {
+        int elementA = 2;
+        BinaryTreeNode binaryTreeNodeLeft;
+        binaryTreeNodeLeft = new BinaryTreeNode(generateNodeId(), elementA, binaryTreeRootNode);
+        binaryTreeRootNode.addLeftChild(binaryTreeNodeLeft);
+        assertEquals(1, binaryTreeNodeLeft.getNodeId());
+    }
+
+    @Test
+    void getNodeIdLeftAndRightChild() {
+        int elementA = 2;
+        int elementB = 3;
+        BinaryTreeNode binaryTreeNodeLeft, binaryTreeNodeRight;
+        binaryTreeNodeLeft = new BinaryTreeNode(generateNodeId(), elementA, binaryTreeRootNode);
+        binaryTreeNodeRight = new BinaryTreeNode(generateNodeId(), elementB, binaryTreeRootNode);
+        binaryTreeRootNode.addLeftChild(binaryTreeNodeLeft);
+
+        assertEquals(1, binaryTreeNodeLeft.getNodeId());
+        assertEquals(2, binaryTreeNodeRight.getNodeId());
     }
 
     @Test
@@ -26,7 +59,7 @@ class BinaryTreeNodeTest {
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("Null is not allowed");
 
-        binaryTreeRootNode = new BinaryTreeNode(null);
+        binaryTreeRootNode = new BinaryTreeNode(generateNodeId(), null);
     }
 
     @Test
@@ -35,7 +68,7 @@ class BinaryTreeNodeTest {
         expectedException.expectMessage("Null is not allowed");
 
         BinaryTreeNode binaryTreeNodeLeft;
-        binaryTreeNodeLeft = new BinaryTreeNode(null, binaryTreeRootNode);
+        binaryTreeNodeLeft = new BinaryTreeNode(generateNodeId(), null, binaryTreeRootNode);
         binaryTreeRootNode.addLeftChild(binaryTreeNodeLeft);
     }
 
@@ -44,7 +77,7 @@ class BinaryTreeNodeTest {
         int elementA = 2;
         int elementB = 3;
         BinaryTreeNode binaryTreeNodeLeft;
-        binaryTreeNodeLeft = new BinaryTreeNode(elementA, binaryTreeRootNode);
+        binaryTreeNodeLeft = new BinaryTreeNode(generateNodeId(), elementA, binaryTreeRootNode);
         binaryTreeRootNode.addLeftChild(binaryTreeNodeLeft);
 
         assertEquals(elementA, binaryTreeRootNode.getLeftChild().getElement());
@@ -67,8 +100,8 @@ class BinaryTreeNodeTest {
         int elementA = 2;
         int elementB = 3;
         BinaryTreeNode binaryTreeNodeLeft, binaryTreeNodeRight;
-        binaryTreeNodeLeft = new BinaryTreeNode(elementA, binaryTreeRootNode);
-        binaryTreeNodeRight = new BinaryTreeNode(elementB, binaryTreeRootNode);
+        binaryTreeNodeLeft = new BinaryTreeNode(generateNodeId(), elementA, binaryTreeRootNode);
+        binaryTreeNodeRight = new BinaryTreeNode(generateNodeId(), elementB, binaryTreeRootNode);
         binaryTreeRootNode.addLeftChild(binaryTreeNodeLeft);
         binaryTreeRootNode.addRightChild(binaryTreeNodeRight);
 
@@ -80,7 +113,7 @@ class BinaryTreeNodeTest {
     void getLeftChildValue() {
         int elementA = 2;
         BinaryTreeNode binaryTreeNodeLeft;
-        binaryTreeNodeLeft = new BinaryTreeNode(elementA, binaryTreeRootNode);
+        binaryTreeNodeLeft = new BinaryTreeNode(generateNodeId(), elementA, binaryTreeRootNode);
         binaryTreeRootNode.addLeftChild(binaryTreeNodeLeft);
 
         assertEquals(elementA, binaryTreeRootNode.getLeftChild().getElement());
@@ -91,8 +124,8 @@ class BinaryTreeNodeTest {
         int elementA = 2;
         int elementB = 3;
         BinaryTreeNode binaryTreeNodeLeft, binaryTreeNodeRight;
-        binaryTreeNodeLeft = new BinaryTreeNode(elementA, binaryTreeRootNode);
-        binaryTreeNodeRight = new BinaryTreeNode(elementB, binaryTreeRootNode);
+        binaryTreeNodeLeft = new BinaryTreeNode(generateNodeId(), elementA, binaryTreeRootNode);
+        binaryTreeNodeRight = new BinaryTreeNode(generateNodeId(), elementB, binaryTreeRootNode);
         binaryTreeRootNode.addLeftChild(binaryTreeNodeLeft);
         binaryTreeRootNode.addRightChild(binaryTreeNodeRight);
 
@@ -104,7 +137,7 @@ class BinaryTreeNodeTest {
     void getParentNode() {
         int element = 2;
         BinaryTreeNode binaryTreeNode;
-        binaryTreeNode = new BinaryTreeNode(element, binaryTreeRootNode);
+        binaryTreeNode = new BinaryTreeNode(generateNodeId(), element, binaryTreeRootNode);
 
         assertEquals(binaryTreeRootNode, binaryTreeNode.getParentNode());
     }
@@ -114,8 +147,8 @@ class BinaryTreeNodeTest {
         int elementA = 2;
         int elementB = 3;
         BinaryTreeNode binaryTreeNode, binaryTreeNodeOther;
-        binaryTreeNode = new BinaryTreeNode(elementA, binaryTreeRootNode);
-        binaryTreeNodeOther = new BinaryTreeNode(elementB, binaryTreeRootNode);
+        binaryTreeNode = new BinaryTreeNode(generateNodeId(), elementA, binaryTreeRootNode);
+        binaryTreeNodeOther = new BinaryTreeNode(generateNodeId(), elementB, binaryTreeRootNode);
         binaryTreeNode.setParentNode(binaryTreeNodeOther);
 
         assertEquals(binaryTreeNodeOther, binaryTreeNode.getParentNode());
@@ -130,7 +163,7 @@ class BinaryTreeNodeTest {
     void isNodeRootFalse() {
         int element = 2;
         BinaryTreeNode binaryTreeNode;
-        binaryTreeNode = new BinaryTreeNode(element, binaryTreeRootNode);
+        binaryTreeNode = new BinaryTreeNode(generateNodeId(), element, binaryTreeRootNode);
 
         assertFalse(binaryTreeNode.isNodeRoot());
     }
