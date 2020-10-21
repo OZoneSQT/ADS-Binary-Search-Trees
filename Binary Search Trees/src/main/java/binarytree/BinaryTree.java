@@ -1,7 +1,8 @@
 package binarytree;
 
-public class BinaryTree {
-    private BinaryTreeNode root;
+public class BinaryTree<K, AnyType> {
+    private BinaryTreeNode<K, AnyType> root, leftChild, rightChild, parentNode;
+    private BinaryTree<K, AnyType> containerTree;
 
     public BinaryTree() {
     }

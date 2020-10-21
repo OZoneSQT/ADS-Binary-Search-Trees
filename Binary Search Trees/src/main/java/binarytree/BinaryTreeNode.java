@@ -1,12 +1,12 @@
 package binarytree;
 
-public class BinaryTreeNode<AnyType> {
+public class BinaryTreeNode<K,AnyType> {
     boolean isRoot = true;
-    int nodeId;
+    private K nodeId;
     private AnyType element;
-    private BinaryTreeNode leftChild, rightChild, parentNode;
+    private BinaryTreeNode<K,AnyType> leftChild, rightChild, parentNode;
 
-    public BinaryTreeNode(int nodeId, AnyType element) {
+    public BinaryTreeNode(K nodeId, AnyType element) {
         this.isRoot = false;
         this.nodeId = nodeId;
 
@@ -17,7 +17,7 @@ public class BinaryTreeNode<AnyType> {
         }
     }
 
-    public BinaryTreeNode(int nodeId, AnyType element, BinaryTreeNode parentNode) {
+    public BinaryTreeNode(K nodeId, AnyType element, BinaryTreeNode<K,AnyType> parentNode) {
         this.isRoot = false;
         this.nodeId = nodeId;
         this.parentNode = parentNode;
@@ -75,7 +75,7 @@ public class BinaryTreeNode<AnyType> {
         return parentNode == null;
     }
 
-    public int getNodeId() {
+    public K getNodeId() {
         return nodeId;
     }
 
