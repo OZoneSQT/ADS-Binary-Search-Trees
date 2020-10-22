@@ -1,4 +1,4 @@
-package binarysearchtree;
+package tree.binarytree;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,6 +21,6 @@ class BinarySearchTreeNodeTest {
     }
 
     @Test
-    void getParent() {
+    void getPatent() {
     }
 }

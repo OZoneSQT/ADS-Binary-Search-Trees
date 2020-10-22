@@ -1,4 +1,4 @@
-package binarytree;
+package tree.binarytree;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BinaryTreeTest {
+class BinaryTreeNodeTest {
 
     @BeforeEach
     void setUp() {
@@ -17,38 +17,46 @@ class BinaryTreeTest {
     }
 
     @Test
-    void getRoot() {
+    void testEquals() {
     }
 
     @Test
-    void isEmpty() {
+    void getElement() {
     }
 
     @Test
-    void size() {
+    void getLeftChild() {
     }
 
     @Test
-    void contains() {
+    void getRightChild() {
     }
 
     @Test
-    void inOrder() {
+    void testHashCode() {
     }
 
     @Test
-    void preOrder() {
+    void setElement() {
     }
 
     @Test
-    void postOrder() {
+    void setLeftChild() {
     }
 
     @Test
-    void levelOrder() {
+    void setRightChild() {
     }
 
     @Test
-    void height() {
+    void testToString() {
+    }
+
+    @Test
+    void setParent() {
+    }
+
+    @Test
+    void getPatent() {
     }
 }
