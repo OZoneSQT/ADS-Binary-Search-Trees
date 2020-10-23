@@ -1,17 +1,12 @@
 package tree.binarytree;
 
-import tree.util.QueueInterface;
-
 public class BinarySearchTree extends BinaryTree {
     private BinaryTreeNode root;
     private InsertNode insertNode = new InsertNode();
     private DeleteNode deleteNode = new DeleteNode();
-    private QueueInterface queueInterface;
 
-    public BinarySearchTree(QueueInterface queueInterface) {
+    public BinarySearchTree() {
         super();
-        this.queueInterface = queueInterface;
-        deleteNode.setBinarySearchTree(this);
     }
 
     public void addElement(final BinaryTreeNode treeRoot, final int value) {
@@ -23,7 +18,7 @@ public class BinarySearchTree extends BinaryTree {
     }
 
     public void removeAllOccurrences(final BinaryTreeNode treeRoot, final int value) {
-        for (int i = 0; i < queueInterface.size(); i++) {
+        for (int i = 0; i < size(); i++) {
             BinaryTreeNode treeNode = searchKey(root, value);
             if (treeNode.getElement() == value) {
                 removeElement(treeRoot, value);

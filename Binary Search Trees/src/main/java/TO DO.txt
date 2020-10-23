@@ -1,0 +1,18 @@
+TODO
+
+Test og methods:
+
+BinaryTree
+                    contains()
+                    height()
+
+
+BinarySearchTree
+                    removeAllOccurrences()
+                    getRoot()
+                    isEmpty()
+                    findMax()
+                    findMin()
+                    removeMin()
+                    removeMax()
+                    searchKey()

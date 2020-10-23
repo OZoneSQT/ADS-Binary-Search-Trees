@@ -87,9 +87,9 @@ public class BinaryTreeNode {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + keyValue;
-        result = prime * result + ((leftChild == null) ? 0 : leftChild.hashCode());
-        result = prime * result + ((rightChild == null) ? 0 : rightChild.hashCode());
+        result = result % prime + keyValue;
+        result = result % prime + ((leftChild == null) ? 0 : leftChild.hashCode());
+        result = result % prime + ((rightChild == null) ? 0 : rightChild.hashCode());
         return result;
     }
 

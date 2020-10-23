@@ -1,17 +1,17 @@
 package tree.binarytree;
 
+import tree.util.QueueFIFO;
 import tree.util.QueueInterface;
 
 public class BinaryTree {
-    private QueueInterface<BinaryTreeNode> fifoQueue;
     private BinarySearchTree binarySearchTree;
 
-    public BinaryTree(QueueInterface fifoQueue, BinarySearchTree binarySearchTree) {
-        this.fifoQueue = fifoQueue;
-        this.binarySearchTree = binarySearchTree;
-    }
 
     public BinaryTree() {
+    }
+
+    public BinaryTree(BinarySearchTree binarySearchTree) {
+        this.binarySearchTree = binarySearchTree;
     }
 
     public BinaryTreeNode getRoot() {
@@ -27,7 +27,7 @@ public class BinaryTree {
     }
 
     public int size() {
-        return fifoQueue.size();
+        return 0;
     }
 
     public boolean contains(int findingValue) {
@@ -65,20 +65,23 @@ public class BinaryTree {
     }
 
     public void levelOrder(final BinaryTreeNode root) {
+        QueueInterface<BinaryTreeNode> fifo = new QueueFIFO<>(41);
         if (root == null) {
             return;
         }
-        fifoQueue.enqueue(root);
-        while (!fifoQueue.isEmpty()) {
-            BinaryTreeNode tmpNode = fifoQueue.dequeue();
+
+        fifo.enqueue(root);
+        while (!fifo.isEmpty()) {
+            BinaryTreeNode tmpNode = fifo.dequeue();
             if (tmpNode.getLeftChild() != null) {
-                fifoQueue.enqueue(tmpNode.getLeftChild());
+                fifo.enqueue(tmpNode.getLeftChild());
             }
             if (tmpNode.getRightChild() != null) {
-                fifoQueue.enqueue(tmpNode.getRightChild());
+                fifo.enqueue(tmpNode.getRightChild());
             }
             print(tmpNode);
         }
+
     }
 
     public int height(BinaryTreeNode binaryTreeNode) {

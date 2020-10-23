@@ -12,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @EnableRuleMigrationSupport
 class BinarySearchTreeTest extends TestBase {
 
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
     @Test
     public void addFourNodes() {
         BinaryTreeNode root = insertNode.add(null, 6);
@@ -85,6 +88,8 @@ class BinarySearchTreeTest extends TestBase {
 
     @Test
     void deleteFullSubtree() {
+        expectedException.expect(NullPointerException.class);
+
         BinaryTreeNode root = insertNode.add(null, 6);
 
         binarySearchTree.addElement(root, 4);
@@ -95,7 +100,7 @@ class BinarySearchTreeTest extends TestBase {
         binarySearchTree.removeElement(root, 10);
 
         BinaryTreeNode found10 = binarySearchTree.searchKey(root, 10);
-        assertNull(found10);
+
     }
 
     @Test

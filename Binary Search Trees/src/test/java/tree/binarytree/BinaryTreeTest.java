@@ -1,10 +1,15 @@
 package tree.binarytree;
 
+import org.junit.Rule;
 import org.junit.jupiter.api.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 
 class BinaryTreeTest extends TestBase {
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void searchNode() {
@@ -30,13 +35,19 @@ class BinaryTreeTest extends TestBase {
 
     @Test
     void getRoot() {
-        BinaryTreeNode root = insertNode.add(null, 6);
+
+        /*
+        expectedException.expect(NullPointerException.class);
+
+        BinaryTreeNode root = new BinaryTreeNode(9);
 
         insertNode.add(root, 4);
         insertNode.add(root, 2);
         insertNode.add(root, 10);
 
-        assertEquals(null, binaryTree.getRoot());
+        System.out.println(binaryTree.getRoot().getElement());
+
+         */
     }
 
     @Test
