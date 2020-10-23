@@ -19,9 +19,6 @@ public class TestBase {
     protected BinarySearchTree binarySearchTree = new BinarySearchTree(queueInterface);
     protected BinaryTree binaryTree = new BinaryTree(queueInterface, binarySearchTree);
 
-    private BinaryTreeNode binaryTreeNode;
-    private BinarySearchTreeNode binarySearchTreeNode;
-
     protected DeleteNode deleteNode = new DeleteNode();
     protected InsertNode insertNode = new InsertNode();
 

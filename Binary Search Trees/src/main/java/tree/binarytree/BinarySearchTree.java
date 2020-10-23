@@ -14,19 +14,19 @@ public class BinarySearchTree extends BinaryTree {
         deleteNode.setBinarySearchTree(this);
     }
 
-    public void addElement(final int value) {
-        root = insertNode.add(root, value);
+    public void addElement(final BinaryTreeNode treeRoot, final int value) {
+        root = insertNode.add(treeRoot, value);
     }
 
-    public void removeElement(final int deletingValue) {
-        root = deleteNode.delete(root, deletingValue);
+    public void removeElement(final BinaryTreeNode treeRoot, final int value) {
+        root = deleteNode.delete(treeRoot, value);
     }
 
-    public void removeAllOccurrences(final int deletingValue) {
+    public void removeAllOccurrences(final BinaryTreeNode treeRoot, final int value) {
         for (int i = 0; i < queueInterface.size(); i++) {
-            BinaryTreeNode treeNode = searchKey(root, deletingValue);
-            if (treeNode.getElement() == deletingValue) {
-                removeElement(deletingValue);
+            BinaryTreeNode treeNode = searchKey(root, value);
+            if (treeNode.getElement() == value) {
+                removeElement(treeRoot, value);
             }
         }
     }
@@ -48,13 +48,11 @@ public class BinarySearchTree extends BinaryTree {
     }
 
     public void removeMin() {
-        int element = findMin(root);
-        removeElement(element);
+        removeElement(root, findMin(root));
     }
 
     public void removeMax() {
-        int element = findMax(root);
-        removeElement(element);
+        removeElement(root, findMax(root));
     }
 
     public BinaryTreeNode searchKey(final BinaryTreeNode treeRoot, final int findingValue) {
