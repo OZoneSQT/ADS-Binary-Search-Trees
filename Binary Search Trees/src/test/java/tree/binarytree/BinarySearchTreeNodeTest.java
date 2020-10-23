@@ -1,26 +1,19 @@
 package tree.binarytree;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BinarySearchTreeNodeTest {
-
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
+class BinarySearchTreeNodeTest extends TestBase {
 
     @Test
-    void setParent() {
+    void setAndGetParent() {
+        BinaryTreeNode root = new BinaryTreeNode(6);
+        BinaryTreeNode treeNode = new BinaryTreeNode(7);
+
+        root.setParent(treeNode);
+        assertEquals(treeNode, root.getPatent());
     }
 
-    @Test
-    void getPatent() {
-    }
 }

@@ -1,20 +1,10 @@
 package tree.binarytree;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BinarySearchTreeTest {
-
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
+class BinarySearchTreeTest extends TestBase {
 
     @Test
     void addElement() {
@@ -59,4 +49,5 @@ class BinarySearchTreeTest {
     @Test
     void testToString() {
     }
+
 }

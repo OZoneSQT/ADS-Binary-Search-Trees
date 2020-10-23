@@ -1,62 +1,48 @@
 package tree.binarytree;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
-class BinaryTreeNodeTest {
+class BinaryTreeNodeTest extends TestBase {
 
-    @BeforeEach
-    void setUp() {
-    }
+    BinaryTreeNode binaryNode = new BinaryTreeNode(1);
 
-    @AfterEach
-    void tearDown() {
+    @Test
+    public void leafNode() {
+        assertEquals(1, binaryNode.getElement());
+        assertNull(binaryNode.getLeftChild());
+        assertNull(binaryNode.getRightChild());
+        System.out.println(binaryNode.toString());
     }
 
     @Test
-    void testEquals() {
+    public void hasLeftNode() {
+        binaryNode.setLeftChild(new BinaryTreeNode(0));
+        assertEquals(1, binaryNode.getElement());
+        assertNotNull(binaryNode.getLeftChild());
+        assertEquals(0, binaryNode.getLeftChild().getElement());
+        System.out.println(binaryNode.toString());
     }
 
     @Test
-    void getElement() {
+    public void hasRightNode() {
+        binaryNode.setRightChild(new BinaryTreeNode(3));
+        assertEquals(1, binaryNode.getElement());
+        assertNotNull(binaryNode.getRightChild());
+        assertEquals(3, binaryNode.getRightChild().getElement());
+        System.out.println(binaryNode.toString());
     }
 
     @Test
-    void getLeftChild() {
+    public void hasTwoNodes() {
+        binaryNode.setLeftChild(new BinaryTreeNode(0));
+        binaryNode.setRightChild(new BinaryTreeNode(3));
+        assertEquals(0, binaryNode.getLeftChild().getElement());
+        assertEquals(3, binaryNode.getRightChild().getElement());
+        System.out.println(binaryNode.toString());
     }
 
-    @Test
-    void getRightChild() {
-    }
-
-    @Test
-    void testHashCode() {
-    }
-
-    @Test
-    void setElement() {
-    }
-
-    @Test
-    void setLeftChild() {
-    }
-
-    @Test
-    void setRightChild() {
-    }
-
-    @Test
-    void testToString() {
-    }
-
-    @Test
-    void setParent() {
-    }
-
-    @Test
-    void getPatent() {
-    }
 }

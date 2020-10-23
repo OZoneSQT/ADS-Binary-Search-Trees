@@ -48,12 +48,12 @@ public class BinarySearchTree extends BinaryTree {
     }
 
     public void removeMin() {
-        int element = findMax(root);
+        int element = findMin(root);
         removeElement(element);
     }
 
     public void removeMax() {
-        int element = findMin(root);
+        int element = findMax(root);
         removeElement(element);
     }
 
