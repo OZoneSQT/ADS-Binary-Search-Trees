@@ -3,9 +3,11 @@ package tree.binarytree;
 import tree.util.QueueFIFO;
 import tree.util.QueueInterface;
 
+import java.util.ArrayList;
+
 public class BinaryTree {
     private BinarySearchTree binarySearchTree;
-
+    private ArrayList<Integer> arrayList = new ArrayList();
 
     public BinaryTree() {
     }
@@ -26,18 +28,37 @@ public class BinaryTree {
         return isEmpty;
     }
 
-    public int size() {
-        return 0;
+    // Need test
+    public int size(final BinaryTreeNode root) {
+        getValue(root);
+        return arrayList.size();
     }
 
-    public boolean contains(int findingValue) {
+    // Need test
+    public boolean contains(final BinaryTreeNode root, int findingValue) {
         boolean result = false;
-        for (int i = 0; i < size(); i++) {
-            if (binarySearchTree.searchKey(getRoot(), findingValue) != null) {
+        getValue(root);
+
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (arrayList.get(i) == findingValue) {
                 result = true;
             }
         }
         return result;
+    }
+
+    // Need test
+    public void getValue(final BinaryTreeNode root) {
+        if (root != null) {
+            getValue(root.getLeftChild());
+            arrayList.add(root.getElement());
+            getValue(root.getRightChild());
+        }
+    }
+
+    // Need test
+    public ArrayList getArrayList() {
+        return arrayList;
     }
 
     public void inOrder(final BinaryTreeNode root) {
@@ -84,6 +105,7 @@ public class BinaryTree {
 
     }
 
+    // Need test
     public int height(BinaryTreeNode binaryTreeNode) {
         if (binaryTreeNode == null) {
             return 0;

@@ -59,7 +59,7 @@ class BinaryTreeTest extends TestBase {
     void size() {
         BinaryTreeNode root = insertNode.add(null, 6);
 
-        assertEquals(0, binaryTree.size());
+        assertEquals(1, binaryTree.size(root));
     }
 
     @Test

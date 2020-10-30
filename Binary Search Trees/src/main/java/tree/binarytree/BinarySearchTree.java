@@ -1,5 +1,7 @@
 package tree.binarytree;
 
+import java.util.ArrayList;
+
 public class BinarySearchTree extends BinaryTree {
     private BinaryTreeNode root;
     private InsertNode insertNode = new InsertNode();
@@ -17,8 +19,9 @@ public class BinarySearchTree extends BinaryTree {
         root = deleteNode.delete(treeRoot, value);
     }
 
+    // note
     public void removeAllOccurrences(final BinaryTreeNode treeRoot, final int value) {
-        for (int i = 0; i < size(); i++) {
+        for (int i = 0; i < size(treeRoot); i++) {
             BinaryTreeNode treeNode = searchKey(root, value);
             if (treeNode.getElement() == value) {
                 removeElement(treeRoot, value);
@@ -34,22 +37,47 @@ public class BinarySearchTree extends BinaryTree {
         return root == null;
     }
 
+    // Need test
     public Integer findMax(final BinaryTreeNode root) {
-        return root.getRightChild() == null ? root.getElement() : findMax(root.getRightChild());
+        getValue(root);
+        ArrayList<Integer> arrayList = getArrayList();
+        int value = 0;
+
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (value < arrayList.get(i)) {
+                value = arrayList.get(i);
+            }
+        }
+
+        return value;
     }
 
+    // Need test
     public int findMin(final BinaryTreeNode root) {
-        return root.getLeftChild() == null ? root.getElement() : findMin(root.getLeftChild());
+        getValue(root);
+        ArrayList<Integer> arrayList = getArrayList();
+        int value = 0;
+
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (value > arrayList.get(i)) {
+                value = arrayList.get(i);
+            }
+        }
+
+        return value;
     }
 
+    // Need test
     public void removeMin() {
         removeElement(root, findMin(root));
     }
 
+    // Need test
     public void removeMax() {
         removeElement(root, findMax(root));
     }
 
+    // Need test
     public BinaryTreeNode searchKey(final BinaryTreeNode treeRoot, final int findingValue) {
         if (treeRoot == null) {
             return null;

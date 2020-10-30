@@ -1,11 +1,10 @@
 TODO
 
-Test og methods:
+Test:
 
 BinaryTree
                     contains()
                     height()
-
 
 BinarySearchTree
                     removeAllOccurrences()
@@ -15,4 +14,10 @@ BinarySearchTree
                     findMin()
                     removeMin()
                     removeMax()
+
                     searchKey()
+                    https://www.softwaretestinghelp.com/binary-search-tree-in-java/
+                    https://stackoverflow.com/questions/53385299/search-key-for-a-binary-search-tree-populated-by-text-file-java
+                    https://www.geeksforgeeks.org/iterative-search-for-a-key-x-in-binary-tree/
+                    https://www.geeksforgeeks.org/binary-search-in-java/
+                    https://java2blog.com/binary-search-tree-in-java/
