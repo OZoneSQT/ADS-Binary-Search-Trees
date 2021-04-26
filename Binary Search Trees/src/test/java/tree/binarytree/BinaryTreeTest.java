@@ -35,6 +35,11 @@ class BinaryTreeTest extends TestBase {
 
     @Test
     void getRoot() {
+        expectedException.expect(NullPointerException.class);
+        BinaryTreeNode root = insertNode.add(null, 6);
+
+        binaryTree.getRoot();
+
 
         /*
         expectedException.expect(NullPointerException.class);
@@ -56,10 +61,28 @@ class BinaryTreeTest extends TestBase {
     }
 
     @Test
-    void size() {
+    void sizeZero() {
+        BinaryTreeNode root = null;
+
+        assertEquals(0, binaryTree.size(root));
+    }
+
+    @Test
+    void sizeOne() {
         BinaryTreeNode root = insertNode.add(null, 6);
 
         assertEquals(1, binaryTree.size(root));
+    }
+
+    @Test
+    void sizeMore() {
+        BinaryTreeNode root = insertNode.add(null, 6);
+        insertNode.add(root, 4);
+        insertNode.add(root, 3);
+        insertNode.add(root, 1);
+        insertNode.add(root, 7);
+
+        assertEquals(5, binaryTree.size(root));
     }
 
     @Test
@@ -68,7 +91,21 @@ class BinaryTreeTest extends TestBase {
     }
 
     @Test
-    void height() {
+    void heightZero() {
+        BinaryTreeNode root = null;
+
+        assertEquals(0, binaryTree.height(root));
+    }
+
+    @Test
+    void heightOne() {
+        BinaryTreeNode root = insertNode.add(null, 6);
+
+        assertEquals(0, binaryTree.height(root));
+    }
+
+    @Test
+    void heightMore() {
 
     }
 

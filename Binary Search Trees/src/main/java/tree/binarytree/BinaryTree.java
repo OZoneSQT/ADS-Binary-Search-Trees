@@ -28,7 +28,6 @@ public class BinaryTree {
         return isEmpty;
     }
 
-    // Need test
     public int size(final BinaryTreeNode root) {
         getValue(root);
         return arrayList.size();
@@ -106,6 +105,7 @@ public class BinaryTree {
     }
 
     // Need test
+    //TODO Returns only root
     public int height(BinaryTreeNode binaryTreeNode) {
         if (binaryTreeNode == null) {
             return 0;
