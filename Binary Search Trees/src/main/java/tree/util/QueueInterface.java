@@ -1,7 +1,7 @@
 package tree.util;
 
 /*
- * Copyright (c) $originalComment.match("Copyright \(c\) (\d+)", 1, "-")$today.year.
+ * Copyright (c) 2021
  *
  * OZ1SQT, Michel S. E. Sommer
  * https://Seahawk.dk
