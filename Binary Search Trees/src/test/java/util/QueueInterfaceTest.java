@@ -1,5 +1,12 @@
 package util;
 
+/*
+ * Copyright (c) $originalComment.match("Copyright \(c\) (\d+)", 1, "-")$today.year.
+ *
+ * OZ1SQT, Michel S. E. Sommer
+ * https://Seahawk.dk
+ */
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +18,6 @@ import tree.util.QueueFIFO;
 import tree.util.QueueInterface;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 
 @EnableRuleMigrationSupport
 class QueueInterfaceTest {

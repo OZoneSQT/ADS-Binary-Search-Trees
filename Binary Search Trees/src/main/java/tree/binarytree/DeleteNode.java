@@ -1,8 +1,14 @@
 package tree.binarytree;
 
+/*
+ * Copyright (c) $originalComment.match("Copyright \(c\) (\d+)", 1, "-")$today.year.
+ *
+ * OZ1SQT, Michel S. E. Sommer
+ * https://Seahawk.dk
+ */
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 
 public class DeleteNode {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

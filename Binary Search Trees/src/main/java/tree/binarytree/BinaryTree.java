@@ -1,10 +1,16 @@
 package tree.binarytree;
 
+/*
+ * Copyright (c) $originalComment.match("Copyright \(c\) (\d+)", 1, "-")$today.year.
+ *
+ * OZ1SQT, Michel S. E. Sommer
+ * https://Seahawk.dk
+ */
+
 import tree.util.QueueFIFO;
 import tree.util.QueueInterface;
 
 import java.util.ArrayList;
-
 
 public class BinaryTree {
     private BinarySearchTree binarySearchTree;

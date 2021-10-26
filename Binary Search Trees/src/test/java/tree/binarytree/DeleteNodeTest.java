@@ -1,12 +1,18 @@
 package tree.binarytree;
 
+/*
+ * Copyright (c) $originalComment.match("Copyright \(c\) (\d+)", 1, "-")$today.year.
+ *
+ * OZ1SQT, Michel S. E. Sommer
+ * https://Seahawk.dk
+ */
+
 import org.junit.Rule;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.migrationsupport.rules.EnableRuleMigrationSupport;
 import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertNull;
-
 
 @EnableRuleMigrationSupport
 class DeleteNodeTest extends TestBase {

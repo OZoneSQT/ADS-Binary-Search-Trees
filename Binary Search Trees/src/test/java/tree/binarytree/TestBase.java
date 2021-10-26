@@ -1,5 +1,12 @@
 package tree.binarytree;
 
+/*
+ * Copyright (c) $originalComment.match("Copyright \(c\) (\d+)", 1, "-")$today.year.
+ *
+ * OZ1SQT, Michel S. E. Sommer
+ * https://Seahawk.dk
+ */
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -8,7 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.assertTrue;
-
 
 public class TestBase {
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());

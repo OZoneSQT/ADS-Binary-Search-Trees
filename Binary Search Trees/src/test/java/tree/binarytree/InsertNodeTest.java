@@ -1,9 +1,15 @@
 package tree.binarytree;
 
+/*
+ * Copyright (c) $originalComment.match("Copyright \(c\) (\d+)", 1, "-")$today.year.
+ *
+ * OZ1SQT, Michel S. E. Sommer
+ * https://Seahawk.dk
+ */
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
-
 
 class InsertNodeTest extends TestBase {
 
