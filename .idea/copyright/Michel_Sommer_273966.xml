@@ -1,5 +1,6 @@
 <component name="CopyrightManager">
   <copyright>
+    <option name="notice" value="/* &#10; * Copyright (c) &amp;#36;originalComment.match(&quot;Copyright \(c\) (\d+)&quot;, 1, &quot;-&quot;)&amp;#36;today.year. &#10; * &#10; * OZ1SQT, Michel S. E. Sommer&#10; * https://Seahawk.dk&#10; */&#10;" />
     <option name="myName" value="Michel Sommer, 273966" />
   </copyright>
 </component>
