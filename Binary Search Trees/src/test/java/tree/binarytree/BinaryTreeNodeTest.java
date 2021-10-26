@@ -27,7 +27,7 @@ class BinaryTreeNodeTest extends TestBase {
 
     @Test
     public void hasLeftNode() {
-        binaryNode.setLeftChild(new BinaryTreeNode(0));
+        binaryNode.addLeftChild(new BinaryTreeNode(0));
         assertEquals(1, binaryNode.getElement());
         assertNotNull(binaryNode.getLeftChild());
         assertEquals(0, binaryNode.getLeftChild().getElement());
@@ -36,7 +36,7 @@ class BinaryTreeNodeTest extends TestBase {
 
     @Test
     public void hasRightNode() {
-        binaryNode.setRightChild(new BinaryTreeNode(3));
+        binaryNode.addRightChild(new BinaryTreeNode(3));
         assertEquals(1, binaryNode.getElement());
         assertNotNull(binaryNode.getRightChild());
         assertEquals(3, binaryNode.getRightChild().getElement());
@@ -45,8 +45,8 @@ class BinaryTreeNodeTest extends TestBase {
 
     @Test
     public void hasTwoNodes() {
-        binaryNode.setLeftChild(new BinaryTreeNode(0));
-        binaryNode.setRightChild(new BinaryTreeNode(3));
+        binaryNode.addLeftChild(new BinaryTreeNode(0));
+        binaryNode.addRightChild(new BinaryTreeNode(3));
         assertEquals(0, binaryNode.getLeftChild().getElement());
         assertEquals(3, binaryNode.getRightChild().getElement());
         System.out.println(binaryNode.toString());

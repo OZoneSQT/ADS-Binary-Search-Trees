@@ -22,10 +22,10 @@ public class BinaryTreeNode {
         this.rightChild = null;
     }
 
-    public int getElement() {
-        return keyValue;
-    }
-
+    /**
+     * Store the element in the Node
+     * @param value
+     */
     public void setElement(final int value) {
         if (value != this.keyValue) {
             logger.info("Node:{} has a new key value {}", this.toString(), value);
@@ -33,7 +33,20 @@ public class BinaryTreeNode {
         }
     }
 
-    public void setLeftChild(final BinaryTreeNode leftChild) {
+    /**
+     * Returns the element from the Node
+     * @return
+     */
+    /* public element getElement() => element = int */
+    public int getElement() {
+        return keyValue;
+    }
+
+    /**
+     * Add a left child to the Node
+     * @param leftChild
+     */
+    public void addLeftChild(final BinaryTreeNode leftChild) {
         if (leftChild == null) {
             this.leftChild = null;
         } else if (!leftChild.equals(getLeftChild())) {
@@ -42,11 +55,19 @@ public class BinaryTreeNode {
         }
     }
 
+    /**
+     * Returns a reference to the left child or null if there is no left child
+     * @return
+     */
     public BinaryTreeNode getLeftChild() {
         return leftChild;
     }
 
-    public void setRightChild(final BinaryTreeNode rightChild) {
+    /**
+     * Add a right child to the Node
+     * @param rightChild
+     */
+    public void addRightChild(final BinaryTreeNode rightChild) {
         if (rightChild == null) {
             this.rightChild = null;
         } else if (!rightChild.equals(getRightChild())) {
@@ -55,6 +76,10 @@ public class BinaryTreeNode {
         }
     }
 
+    /***
+     * Returns a reference to the right child or null if there is no right child
+     * @return
+     */
     public BinaryTreeNode getRightChild() {
         return rightChild;
     }

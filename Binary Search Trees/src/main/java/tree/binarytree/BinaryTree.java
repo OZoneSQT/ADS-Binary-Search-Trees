@@ -23,10 +23,18 @@ public class BinaryTree {
         this.binarySearchTree = binarySearchTree;
     }
 
+    /**
+     * Returns a reference to the root or null if tree is empty
+     * @return
+     */
     public BinaryTreeNode getRoot() {
         return binarySearchTree.getRoot();
     }
 
+    /**
+     * Determines whether the tree is empty
+     * @return
+     */
     public boolean isEmpty() {
         boolean isEmpty = true;
         if (getRoot() != null) {
@@ -35,12 +43,23 @@ public class BinaryTree {
         return isEmpty;
     }
 
+    /**
+     * Returns the number of elements in the tree
+     * @param root
+     * @return
+     */
     public int size(final BinaryTreeNode root) {
         getValue(root);
         return arrayList.size();
     }
 
-    // Need test
+    /**
+     * Determines if an element is present in the tree
+     * @param root
+     * @param findingValue
+     * @return
+     */
+    // Need test - traverse and compare elements
     public boolean contains(final BinaryTreeNode root, int findingValue) {
         boolean result = false;
         getValue(root);
@@ -51,6 +70,15 @@ public class BinaryTree {
             }
         }
         return result;
+    }
+
+    /**
+     * Set the root of the tree
+     * @param binaryTreeNode
+     */
+    // Need test
+    public void setRoot(BinaryTreeNode binaryTreeNode) {
+
     }
 
     // Need test
@@ -67,6 +95,11 @@ public class BinaryTree {
         return arrayList;
     }
 
+    /**
+     * Returns a inOrder representation of the tree or null if the tree is empty
+     * @param root
+     */
+    // Has to return ArrayList
     public void inOrder(final BinaryTreeNode root) {
         if (root != null) {
             inOrder(root.getLeftChild());
@@ -75,6 +108,11 @@ public class BinaryTree {
         }
     }
 
+    /**
+     * Returns a preOrder representation of the tree or null if the tree is empty
+     * @param root
+     */
+    // Has to return ArrayList
     public void preOrder(final BinaryTreeNode root) {
         if (root != null) {
             print(root);
@@ -83,6 +121,11 @@ public class BinaryTree {
         }
     }
 
+    /**
+     * Returns a postOrder representation of the tree or null if the tree is empty
+     * @param root
+     */
+    // Has to return ArrayList
     public void postOrder(final BinaryTreeNode root) {
         if (root != null) {
             preOrder(root.getLeftChild());
@@ -91,6 +134,11 @@ public class BinaryTree {
         }
     }
 
+    /**
+     * Returns a level Order representation of the tree or null if the tree is empty
+     * @param root
+     */
+    // Has to return ArrayList
     public void levelOrder(final BinaryTreeNode root) {
         QueueInterface<BinaryTreeNode> fifo = new QueueFIFO<>(41);
         if (root == null) {
@@ -111,6 +159,11 @@ public class BinaryTree {
 
     }
 
+    /**
+     * Returns the height of the tree or -1 if the tree is empty
+     * @param binaryTreeNode
+     * @return
+     */
     // Need test
     //TODO Returns only root
     public int height(BinaryTreeNode binaryTreeNode) {

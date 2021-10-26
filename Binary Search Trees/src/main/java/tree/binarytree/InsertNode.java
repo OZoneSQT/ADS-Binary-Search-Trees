@@ -21,11 +21,11 @@ public class InsertNode {
         }
 
         if (addingValue < treeRoot.getElement()) {
-            treeRoot.setLeftChild(add(treeRoot.getLeftChild(), addingValue));
+            treeRoot.addLeftChild(add(treeRoot.getLeftChild(), addingValue));
         } else if (addingValue == treeRoot.getElement()) {
             return treeRoot;
         } else {
-            treeRoot.setRightChild(add(treeRoot.getRightChild(), addingValue));
+            treeRoot.addRightChild(add(treeRoot.getRightChild(), addingValue));
         }
 
         return treeRoot;

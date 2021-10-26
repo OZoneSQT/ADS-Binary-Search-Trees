@@ -45,19 +45,19 @@ public class DeleteNode {
                     int minTreeNode = binarySearchTree.findMin(binaryTreeNode.getRightChild());
                     logger.info("Replace key with with the minumu value {} and reset the right node", minTreeNode);
                     binaryTreeNode.setElement(minTreeNode);
-                    binaryTreeNode.setRightChild(delete(binaryTreeNode.getRightChild(), minTreeNode));
+                    binaryTreeNode.addRightChild(delete(binaryTreeNode.getRightChild(), minTreeNode));
                     return binaryTreeNode;
                 }
             }
         } else if (deletingValue < binaryTreeNode.getElement()) {
             BinaryTreeNode tempTreeNode = delete(binaryTreeNode.getLeftChild(), deletingValue);
             if (tempTreeNode == null || (binaryTreeNode.getLeftChild() != null && !binaryTreeNode.getLeftChild().equals(tempTreeNode))) {
-                binaryTreeNode.setLeftChild(tempTreeNode);
+                binaryTreeNode.addLeftChild(tempTreeNode);
             }
             return binaryTreeNode;
         } else {
             BinaryTreeNode tempTreeNode = delete(binaryTreeNode.getRightChild(), deletingValue);
-            binaryTreeNode.setRightChild(tempTreeNode);
+            binaryTreeNode.addRightChild(tempTreeNode);
             return binaryTreeNode;
         }
     }

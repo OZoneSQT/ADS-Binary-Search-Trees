@@ -1,4 +1,5 @@
-TODO
+//TODO
+ use E insted of integer and implement Comparable
 
 Test:
 

@@ -18,10 +18,20 @@ public class BinarySearchTree extends BinaryTree {
         super();
     }
 
+    /**
+     * Add an element to the tree. Do nothing if present
+     * @param treeRoot
+     * @param value
+     */
     public void addElement(final BinaryTreeNode treeRoot, final int value) {
         root = insertNode.add(treeRoot, value);
     }
 
+    /**
+     * Remove an element from the tree Do nothing if not present
+     * @param treeRoot
+     * @param value
+     */
     public void removeElement(final BinaryTreeNode treeRoot, final int value) {
         root = deleteNode.delete(treeRoot, value);
     }
@@ -44,6 +54,11 @@ public class BinarySearchTree extends BinaryTree {
         return root == null;
     }
 
+    /**
+     * Returns the maximum element of the tree
+     * @param root
+     * @return
+     */
     // Need test
     public Integer findMax(final BinaryTreeNode root) {
         getValue(root);
@@ -59,6 +74,11 @@ public class BinarySearchTree extends BinaryTree {
         return value;
     }
 
+    /**
+     * Returns the minimum element of the tree
+     * @param root
+     * @return
+     */
     // Need test
     public int findMin(final BinaryTreeNode root) {
         getValue(root);
@@ -97,6 +117,22 @@ public class BinarySearchTree extends BinaryTree {
         } else {
             return searchKey(treeRoot.getLeftChild(), findingValue);
         }
+    }
+
+    /**
+     * Determines if an element is present in the tree
+     * @param i
+     * @return
+     */
+    public  boolean contains(int i) {
+        return false;
+    }
+
+    /**
+     * Rebalance the entire tree, the outcome must be a balanced tree.
+     */
+    public void  rebalance() {
+        // divide and conquer array then put into tree again
     }
 
     public String toString() {
