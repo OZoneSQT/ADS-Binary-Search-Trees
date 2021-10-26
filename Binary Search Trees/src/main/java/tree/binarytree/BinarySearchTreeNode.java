@@ -1,5 +1,6 @@
 package tree.binarytree;
 
+
 public class BinarySearchTreeNode extends BinaryTreeNode {
 
     public BinarySearchTreeNode(int value) {

@@ -3,6 +3,7 @@ package tree.binarytree;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public class DeleteNode {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private BinarySearchTree binarySearchTree;

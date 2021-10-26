@@ -1,5 +1,6 @@
 package tree.util;
 
+
 public class QueueFIFO<T> implements QueueInterface<T> {
 
     private T[] queue;

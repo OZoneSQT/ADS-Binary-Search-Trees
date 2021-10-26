@@ -3,6 +3,7 @@ package tree.binarytree;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public class BinaryTreeNode {
     private int keyValue;
     private BinaryTreeNode leftChild, rightChild, parentNode;

@@ -5,6 +5,7 @@ import tree.util.QueueInterface;
 
 import java.util.ArrayList;
 
+
 public class BinaryTree {
     private BinarySearchTree binarySearchTree;
     private ArrayList<Integer> arrayList = new ArrayList();

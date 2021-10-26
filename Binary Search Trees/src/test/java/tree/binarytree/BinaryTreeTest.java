@@ -6,6 +6,7 @@ import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 
+
 class BinaryTreeTest extends TestBase {
 
     @Rule

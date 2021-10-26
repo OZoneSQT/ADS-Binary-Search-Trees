@@ -12,6 +12,7 @@ import tree.util.QueueInterface;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 @EnableRuleMigrationSupport
 class QueueInterfaceTest {
     private QueueInterface<String> myQueueInterface;

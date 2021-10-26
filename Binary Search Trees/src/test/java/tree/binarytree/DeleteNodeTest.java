@@ -7,6 +7,7 @@ import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertNull;
 
+
 @EnableRuleMigrationSupport
 class DeleteNodeTest extends TestBase {
 

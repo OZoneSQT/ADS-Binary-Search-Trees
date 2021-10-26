@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.assertTrue;
 
+
 public class TestBase {
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 

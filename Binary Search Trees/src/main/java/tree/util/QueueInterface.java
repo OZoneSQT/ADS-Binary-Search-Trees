@@ -1,5 +1,6 @@
 package tree.util;
 
+
 public interface QueueInterface<T> {
     void enqueue(T element);
     T dequeue();

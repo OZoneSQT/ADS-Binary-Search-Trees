@@ -2,6 +2,7 @@ package tree.binarytree;
 
 import java.util.ArrayList;
 
+
 public class BinarySearchTree extends BinaryTree {
     private BinaryTreeNode root;
     private InsertNode insertNode = new InsertNode();
