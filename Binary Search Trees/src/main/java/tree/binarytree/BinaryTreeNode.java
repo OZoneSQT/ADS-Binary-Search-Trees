@@ -7,30 +7,26 @@ package tree.binarytree;
  * https://Seahawk.dk
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+public class BinaryTreeNode<T> {
+    private T element;
+    private BinaryTreeNode leftChild, rightChild;
 
-public class BinaryTreeNode {
-    private int keyValue;
-    private BinaryTreeNode leftChild, rightChild, parentNode;
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    public BinaryTreeNode(final int value) {
+    public BinaryTreeNode(final T element) {
         super();
-        this.keyValue = value;
+        this.element = element;
         this.leftChild = null;
         this.rightChild = null;
     }
 
     /**
      * Store the element in the Node
-     * @param value
+     * @param newElement
      */
-    public void setElement(final int value) {
-        if (value != this.keyValue) {
-            logger.info("Node:{} has a new key value {}", this.toString(), value);
-            this.keyValue = value;
+    public T setElement(final T newElement) {
+        if (element.equals(newElement)) {
+            this.element = newElement;
         }
+        return element;
     }
 
     /**
@@ -38,8 +34,8 @@ public class BinaryTreeNode {
      * @return
      */
     /* public element getElement() => element = int */
-    public int getElement() {
-        return keyValue;
+    public T getElement() {
+        return element;
     }
 
     /**
@@ -50,8 +46,19 @@ public class BinaryTreeNode {
         if (leftChild == null) {
             this.leftChild = null;
         } else if (!leftChild.equals(getLeftChild())) {
-            logger.info("Node:{} sets new left child:{}", this.toString(), (leftChild == null ? null : leftChild.toString()));
             this.leftChild = leftChild;
+        }
+    }
+
+    /**
+     * Add a right child to the Node
+     * @param rightChild
+     */
+    public void addRightChild(final BinaryTreeNode rightChild) {
+        if (rightChild == null) {
+            this.rightChild = null;
+        } else if (!rightChild.equals(getRightChild())) {
+            this.rightChild = rightChild;
         }
     }
 
@@ -63,71 +70,12 @@ public class BinaryTreeNode {
         return leftChild;
     }
 
-    /**
-     * Add a right child to the Node
-     * @param rightChild
-     */
-    public void addRightChild(final BinaryTreeNode rightChild) {
-        if (rightChild == null) {
-            this.rightChild = null;
-        } else if (!rightChild.equals(getRightChild())) {
-            logger.info("Node:{} sets new right child:{}", this.toString(), (rightChild == null ? null : rightChild.toString()));
-            this.rightChild = rightChild;
-        }
-    }
-
     /***
      * Returns a reference to the right child or null if there is no right child
      * @return
      */
     public BinaryTreeNode getRightChild() {
         return rightChild;
-    }
-
-    public void setParent(BinaryTreeNode parentNode) {
-        this.parentNode = parentNode;
-    }
-
-    public BinaryTreeNode getPatent() {
-        return parentNode;
-    }
-
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        BinaryTreeNode other = (BinaryTreeNode) obj;
-        if (keyValue != other.keyValue)
-            return false;
-        if (leftChild == null) {
-            if (other.leftChild != null)
-                return false;
-        } else if (!leftChild.equals(other.leftChild))
-            return false;
-        if (rightChild == null) {
-            if (other.rightChild != null)
-                return false;
-        } else if (!rightChild.equals(other.rightChild))
-            return false;
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = result % prime + keyValue;
-        result = result % prime + ((leftChild == null) ? 0 : leftChild.hashCode());
-        result = result % prime + ((rightChild == null) ? 0 : rightChild.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "BinaryNode [keyValue: " + keyValue + ", left child: " + leftChild + ", right child: " + rightChild + "]";
     }
 
 }

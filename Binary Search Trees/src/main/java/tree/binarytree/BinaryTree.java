@@ -12,15 +12,13 @@ import tree.util.QueueInterface;
 
 import java.util.ArrayList;
 
-public class BinaryTree {
-    private BinarySearchTree binarySearchTree;
-    private ArrayList<Integer> arrayList = new ArrayList();
-
-    public BinaryTree() {
-    }
+public class BinaryTree<T> {
+    private BinaryTreeNode root;
+    private ArrayList<BinaryTreeNode> binarySearchTree;
 
     public BinaryTree(BinarySearchTree binarySearchTree) {
-        this.binarySearchTree = binarySearchTree;
+        this.root = null;
+        this.binarySearchTree = new ArrayList<>();
     }
 
     /**
@@ -28,7 +26,15 @@ public class BinaryTree {
      * @return
      */
     public BinaryTreeNode getRoot() {
-        return binarySearchTree.getRoot();
+        return root;
+    }
+
+    /**
+     * Set the root of the tree
+     * @param root
+     */
+    public void setRoot(BinaryTreeNode root) {
+        this.root = root;
     }
 
     /**
@@ -36,113 +42,110 @@ public class BinaryTree {
      * @return
      */
     public boolean isEmpty() {
-        boolean isEmpty = true;
-        if (getRoot() != null) {
-            isEmpty = false;
+        if (root == null) {
+            return true;
+        } else {
+            return false;
         }
-        return isEmpty;
     }
 
     /**
      * Returns the number of elements in the tree
-     * @param root
      * @return
      */
-    public int size(final BinaryTreeNode root) {
-        getValue(root);
-        return arrayList.size();
+    public int size() {
+        return inOrder(root).size();
     }
 
     /**
      * Determines if an element is present in the tree
-     * @param root
-     * @param findingValue
      * @return
      */
-    // Need test - traverse and compare elements
-    public boolean contains(final BinaryTreeNode root, int findingValue) {
+    public boolean contains(T element) {
+        ArrayList<BinaryTreeNode> arrayList = inOrder(root);
         boolean result = false;
-        getValue(root);
-
         for (int i = 0; i < arrayList.size(); i++) {
-            if (arrayList.get(i) == findingValue) {
+            BinaryTreeNode node = arrayList.get(i);
+            if (element.equals(node.getElement())) {
                 result = true;
+                i = arrayList.size();
             }
         }
         return result;
     }
 
     /**
-     * Set the root of the tree
-     * @param binaryTreeNode
-     */
-    // Need test
-    public void setRoot(BinaryTreeNode binaryTreeNode) {
-
-    }
-
-    // Need test
-    public void getValue(final BinaryTreeNode root) {
-        if (root != null) {
-            getValue(root.getLeftChild());
-            arrayList.add(root.getElement());
-            getValue(root.getRightChild());
-        }
-    }
-
-    // Need test
-    public ArrayList getArrayList() {
-        return arrayList;
-    }
-
-    /**
      * Returns a inOrder representation of the tree or null if the tree is empty
-     * @param root
      */
-    // Has to return ArrayList
-    public void inOrder(final BinaryTreeNode root) {
+    public ArrayList<BinaryTreeNode> inOrder() {
+        if (binarySearchTree.isEmpty()) {
+            return null;
+        }
+        return inOrder(root);
+    }
+
+    private ArrayList<BinaryTreeNode> inOrder(final BinaryTreeNode root) {
         if (root != null) {
             inOrder(root.getLeftChild());
-            print(root);
+            binarySearchTree.add(root);
             inOrder(root.getRightChild());
         }
+        return binarySearchTree;
     }
 
     /**
      * Returns a preOrder representation of the tree or null if the tree is empty
-     * @param root
      */
-    // Has to return ArrayList
-    public void preOrder(final BinaryTreeNode root) {
+    public ArrayList<BinaryTreeNode> preOrder() {
+        if (binarySearchTree.isEmpty()) {
+            return null;
+        }
+        return preOrder(root);
+    }
+
+    private ArrayList<BinaryTreeNode> preOrder(final BinaryTreeNode root) {
         if (root != null) {
-            print(root);
+            binarySearchTree.add(root);
             preOrder(root.getLeftChild());
             preOrder(root.getRightChild());
         }
+        return binarySearchTree;
     }
 
     /**
      * Returns a postOrder representation of the tree or null if the tree is empty
-     * @param root
      */
-    // Has to return ArrayList
-    public void postOrder(final BinaryTreeNode root) {
+    public ArrayList<BinaryTreeNode> postOrder() {
+        if (binarySearchTree.isEmpty()) {
+            return null;
+        }
+        return postOrder(root);
+    }
+
+    private ArrayList<BinaryTreeNode> postOrder(final BinaryTreeNode root) {
         if (root != null) {
             preOrder(root.getLeftChild());
             preOrder(root.getRightChild());
-            print(root);
+            binarySearchTree.add(root);
         }
+        return binarySearchTree;
     }
 
     /**
      * Returns a level Order representation of the tree or null if the tree is empty
-     * @param root
      */
+    public ArrayList<BinaryTreeNode> levelOrder() {
+        if (binarySearchTree.isEmpty()) {
+            return null;
+        }
+        return levelOrder(root);
+    }
+
     // Has to return ArrayList
-    public void levelOrder(final BinaryTreeNode root) {
+    public ArrayList<BinaryTreeNode> levelOrder(final BinaryTreeNode root) {
         QueueInterface<BinaryTreeNode> fifo = new QueueFIFO<>(41);
         if (root == null) {
-            return;
+            return binarySearchTree;
         }
 
         fifo.enqueue(root);
@@ -154,19 +157,21 @@ public class BinaryTree {
             if (tmpNode.getRightChild() != null) {
                 fifo.enqueue(tmpNode.getRightChild());
             }
-            print(tmpNode);
+            binarySearchTree.add(tmpNode);
         }
 
+        return binarySearchTree;
     }
 
     /**
      * Returns the height of the tree or -1 if the tree is empty
-     * @param binaryTreeNode
-     * @return
      */
     // Need test
     //TODO Returns only root
-    public int height(BinaryTreeNode binaryTreeNode) {
+    public int height() {
+        return log(size(), 2);
+
+     /*
         if (binaryTreeNode == null) {
             return 0;
         } else {
@@ -178,10 +183,15 @@ public class BinaryTree {
             else
                 return (rightDepth++);
         }
+
+       */
+
     }
 
-    private void print(final BinaryTreeNode root) {
-        System.out.print(root.getElement() + " ");
+    private int log(int n, int log) {
+        int result = (int)(Math.log(n) / Math.log(log));
+        return result;
     }
 
 }
+
