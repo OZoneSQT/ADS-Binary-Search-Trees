@@ -7,16 +7,10 @@ package tree.binarytree;
  * https://Seahawk.dk
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class InsertNode {
-
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public BinaryTreeNode add(final BinaryTreeNode treeRoot, final int addingValue) {
         if (treeRoot == null) {
-            logger.info("Create a new leaf node with keyvalue:{} ", addingValue);
             return new BinaryTreeNode(addingValue);
         }
 
@@ -31,4 +25,6 @@ public class InsertNode {
         return treeRoot;
     }
 
+    public <T> BinaryTreeNode add(T element) {
+    }
 }

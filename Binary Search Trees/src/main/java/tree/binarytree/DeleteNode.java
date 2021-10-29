@@ -62,4 +62,6 @@ public class DeleteNode {
         }
     }
 
+    public <T> BinaryTreeNode delete(T element) {
+    }
 }

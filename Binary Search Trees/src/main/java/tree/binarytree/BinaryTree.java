@@ -14,9 +14,10 @@ import java.util.ArrayList;
 
 public class BinaryTree<T> {
     private BinaryTreeNode root;
+    private int size;
     private ArrayList<BinaryTreeNode> binarySearchTree;
 
-    public BinaryTree(BinarySearchTree binarySearchTree) {
+    public BinaryTree() {
         this.root = null;
         this.binarySearchTree = new ArrayList<>();
     }
