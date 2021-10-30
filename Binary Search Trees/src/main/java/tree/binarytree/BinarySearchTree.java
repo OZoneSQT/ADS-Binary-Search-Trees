@@ -9,7 +9,7 @@ package tree.binarytree;
 
 import java.util.ArrayList;
 
-public class BinarySearchTree<AnyType> extends BinaryTree<AnyType> {
+public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> extends BinaryTree<AnyType> {
     private BinarySearchTreeNode root;
   //  private InsertNode insertNode = new InsertNode();
    //  private DeleteNode deleteNode = new DeleteNode();
@@ -31,8 +31,10 @@ public class BinarySearchTree<AnyType> extends BinaryTree<AnyType> {
         if (isEmpty()) {
             setRoot(new BinarySearchTreeNode(element));
         }
-        
+
         //TODO calc location from size
+        //Left Child    =>     2n+1      =>      int pos = ( 2 * size() + 1 )
+        //Right Child   =>    2(n+1)     =>      int pos = ( 2 * ( size() + 1 ) )
 
         return root;
     }
@@ -78,6 +80,23 @@ public class BinarySearchTree<AnyType> extends BinaryTree<AnyType> {
     public void rebalance() {
         // divide and conquer array then put into tree again
         // if equal length, select element to the right of center (to fill up from left)
+        // https://github.com/DanielRailean/ADS1-A2021/blob/main/AVLTree/src/AVLTree.java
+    }
+
+    private BinarySearchTreeNode updateNode(BinarySearchTreeNode binarySearchTreeNode) {
+        return null;
+    }
+
+    private BinarySearchTreeNode rotateLeft(BinarySearchTreeNode binarySearchTreeNode) {
+        return null;
+    }
+
+    private BinarySearchTreeNode rotateRight(BinarySearchTreeNode binarySearchTreeNode) {
+        return null;
+    }
+
+    private BinarySearchTreeNode isInBalance(BinarySearchTreeNode binarySearchTreeNode) {
+        return null;
     }
 
 }
