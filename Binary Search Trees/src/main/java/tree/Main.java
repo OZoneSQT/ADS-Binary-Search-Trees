@@ -13,7 +13,7 @@ import tree.binarytree.BinaryTreeNode;
 public class Main {
 
     public static void main(String[] args) {
-        BinarySearchTree binarySearchTree = new BinarySearchTree();
+ /*       BinarySearchTree binarySearchTree = new BinarySearchTree();
 
         BinaryTreeNode treeRoot = new BinaryTreeNode(1);
         binarySearchTree.addElement(treeRoot, 6);
@@ -39,7 +39,7 @@ public class Main {
 
         System.out.print("\nPostOrder: ");
         binarySearchTree.postOrder(binarySearchTree.getRoot());
-
+*/
     }
 
 }

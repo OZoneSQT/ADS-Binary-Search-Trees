@@ -7,11 +7,11 @@ package tree.binarytree;
  * https://Seahawk.dk
  */
 
-public class BinaryTreeNode<T> {
-    private T element;
+public class BinaryTreeNode<AnyType> {
+    private AnyType element;
     private BinaryTreeNode leftChild, rightChild;
 
-    public BinaryTreeNode(final T element) {
+    public BinaryTreeNode(AnyType element) {
         super();
         this.element = element;
         this.leftChild = null;
@@ -22,11 +22,8 @@ public class BinaryTreeNode<T> {
      * Store the element in the Node
      * @param newElement
      */
-    public T setElement(final T newElement) {
-        if (element.equals(newElement)) {
-            this.element = newElement;
-        }
-        return element;
+    public void setElement(AnyType newElement) {
+        this.element = newElement;
     }
 
     /**
@@ -34,7 +31,7 @@ public class BinaryTreeNode<T> {
      * @return
      */
     /* public element getElement() => element = int */
-    public T getElement() {
+    public AnyType getElement() {
         return element;
     }
 
@@ -43,23 +40,15 @@ public class BinaryTreeNode<T> {
      * @param leftChild
      */
     public void addLeftChild(final BinaryTreeNode leftChild) {
-        if (leftChild == null) {
-            this.leftChild = null;
-        } else if (!leftChild.equals(getLeftChild())) {
-            this.leftChild = leftChild;
-        }
+        this.leftChild = leftChild;
     }
 
     /**
      * Add a right child to the Node
      * @param rightChild
      */
-    public void addRightChild(final BinaryTreeNode rightChild) {
-        if (rightChild == null) {
-            this.rightChild = null;
-        } else if (!rightChild.equals(getRightChild())) {
-            this.rightChild = rightChild;
-        }
+    public void addRightChild(BinaryTreeNode rightChild) {
+        this.rightChild = rightChild;
     }
 
     /**

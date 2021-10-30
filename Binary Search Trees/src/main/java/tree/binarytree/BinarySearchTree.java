@@ -9,7 +9,7 @@ package tree.binarytree;
 
 import java.util.ArrayList;
 
-public class BinarySearchTree<T> extends BinaryTree {
+public class BinarySearchTree<AnyType> extends BinaryTree {
     private BinaryTreeNode root;
     private InsertNode insertNode = new InsertNode();
     private DeleteNode deleteNode = new DeleteNode();
@@ -21,7 +21,7 @@ public class BinarySearchTree<T> extends BinaryTree {
     /**
      * Add an element to the tree. Do nothing if present
      */
-    public void insertElement(T element) {
+    public void insertElement(AnyType element) {
         //TODO if not present, call contains
         root = insertNode.add(element);
     }
@@ -31,7 +31,7 @@ public class BinarySearchTree<T> extends BinaryTree {
      * @param treeRoot
      * @param value
      */
-    public void removeElement(T element) {
+    public void removeElement(AnyType element) {
         root = deleteNode.delete(element);
     }
 
@@ -62,7 +62,7 @@ public class BinarySearchTree<T> extends BinaryTree {
     /**
      * Determines if an element is present in the tree
      */
-    public boolean contains(T element) {
+    public boolean contains(AnyType element) {
         return false;
     }
 

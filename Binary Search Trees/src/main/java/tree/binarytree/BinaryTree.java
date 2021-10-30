@@ -11,15 +11,14 @@ import tree.util.QueueFIFO;
 import tree.util.QueueInterface;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
-public class BinaryTree<T> {
+public class BinaryTree<AnyType> {
     private BinaryTreeNode root;
-    private int size;
-    private ArrayList<BinaryTreeNode> binarySearchTree;
 
     public BinaryTree() {
         this.root = null;
-        this.binarySearchTree = new ArrayList<>();
     }
 
     /**
@@ -43,150 +42,162 @@ public class BinaryTree<T> {
      * @return
      */
     public boolean isEmpty() {
-        if (root == null) {
-            return true;
-        } else {
-            return false;
-        }
+        return root == null;
     }
 
     /**
-     * Returns the number of elements in the tree
+     * Returns the number of elements in the tree size
      * @return
      */
     public int size() {
-        return inOrder(root).size();
+        return inOrder().size();
     }
 
     /**
      * Determines if an element is present in the tree
      * @return
      */
-    public boolean contains(T element) {
-        ArrayList<BinaryTreeNode> arrayList = inOrder(root);
-        boolean result = false;
-        for (int i = 0; i < arrayList.size(); i++) {
-            BinaryTreeNode node = arrayList.get(i);
-            if (element.equals(node.getElement())) {
-                result = true;
-                i = arrayList.size();
-            }
+    public boolean contains(AnyType element) {
+        return contains(getRoot(), element);
+    }
+
+    private boolean contains(BinaryTreeNode root, AnyType element) {
+        if (root == null) {
+            return false;
+        } else if (element.equals(root.getElement())) {
+            return true;
+        } else {
+            return contains(root.getLeftChild(), element) || contains(root.getRightChild(), element);
         }
-        return result;
     }
 
     /**
      * Returns a inOrder representation of the tree or null if the tree is empty
      */
-    public ArrayList<BinaryTreeNode> inOrder() {
-        if (binarySearchTree.isEmpty()) {
+    public ArrayList inOrder() {
+        ArrayList<BinaryTreeNode> tree = new ArrayList<>();
+        if (isEmpty()) {
             return null;
         }
-        return inOrder(root);
+        return inOrder(root, tree);
     }
 
-    private ArrayList<BinaryTreeNode> inOrder(final BinaryTreeNode root) {
+    private ArrayList inOrder(BinaryTreeNode root, ArrayList tree) {
         if (root != null) {
-            inOrder(root.getLeftChild());
-            binarySearchTree.add(root);
-            inOrder(root.getRightChild());
+            inOrder(root.getLeftChild(), tree);
+            tree.add(root);
+            inOrder(root.getRightChild(), tree);
         }
-        return binarySearchTree;
+        return tree;
     }
 
     /**
      * Returns a preOrder representation of the tree or null if the tree is empty
      */
-    public ArrayList<BinaryTreeNode> preOrder() {
-        if (binarySearchTree.isEmpty()) {
+    public ArrayList preOrder() {
+        ArrayList<AnyType> tree = new ArrayList<>();
+        if (isEmpty()) {
             return null;
         }
-        return preOrder(root);
+        return preOrder(root, tree);
     }
 
-    private ArrayList<BinaryTreeNode> preOrder(final BinaryTreeNode root) {
+    private ArrayList preOrder(BinaryTreeNode root, ArrayList tree) {
         if (root != null) {
-            binarySearchTree.add(root);
-            preOrder(root.getLeftChild());
-            preOrder(root.getRightChild());
+            tree.add(root.getElement());
+            preOrder(root.getLeftChild(), tree);
+            preOrder(root.getRightChild(), tree);
         }
-        return binarySearchTree;
+        return tree;
     }
 
     /**
      * Returns a postOrder representation of the tree or null if the tree is empty
      */
-    public ArrayList<BinaryTreeNode> postOrder() {
-        if (binarySearchTree.isEmpty()) {
+    public ArrayList postOrder() {
+        ArrayList<AnyType> output = new ArrayList<>();
+        if (isEmpty()) {
             return null;
         }
-        return postOrder(root);
+        return postOrder(root, output);
     }
 
-    private ArrayList<BinaryTreeNode> postOrder(final BinaryTreeNode root) {
+    private ArrayList postOrder(BinaryTreeNode root, ArrayList output) {
         if (root != null) {
-            preOrder(root.getLeftChild());
-            preOrder(root.getRightChild());
-            binarySearchTree.add(root);
+            preOrder(root.getLeftChild(), output);
+            preOrder(root.getRightChild(), output);
+            output.add(root.getElement());
         }
-        return binarySearchTree;
+        return output;
     }
 
     /**
      * Returns a level Order representation of the tree or null if the tree is empty
      */
-    public ArrayList<BinaryTreeNode> levelOrder() {
-        if (binarySearchTree.isEmpty()) {
+    public ArrayList levelOrder() {
+        ArrayList<AnyType> output = new ArrayList<>();
+
+
+        if (isEmpty()) {
             return null;
         }
-        return levelOrder(root);
+        return levelOrder(root, output);
     }
 
-    // Has to return ArrayList
-    public ArrayList<BinaryTreeNode> levelOrder(final BinaryTreeNode root) {
-        QueueInterface<BinaryTreeNode> fifo = new QueueFIFO<>(41);
+    private ArrayList levelOrder(BinaryTreeNode root, ArrayList output) {
+        Queue<AnyType> queue = new LinkedList<>();
         if (root == null) {
-            return binarySearchTree;
+            return output;
         }
 
-        fifo.enqueue(root);
-        while (!fifo.isEmpty()) {
-            BinaryTreeNode tmpNode = fifo.dequeue();
-            if (tmpNode.getLeftChild() != null) {
-                fifo.enqueue(tmpNode.getLeftChild());
+        queue.add((AnyType) root.getElement());
+        while (!queue.isEmpty()) {
+            AnyType tmpNode = queue.poll();
+            if (tmpNode != null) {
+                queue.add(tmpNode);
             }
-            if (tmpNode.getRightChild() != null) {
-                fifo.enqueue(tmpNode.getRightChild());
+            if (tmpNode != null) {
+                queue.add(tmpNode);
             }
-            binarySearchTree.add(tmpNode);
+            output.add(tmpNode);
         }
 
-        return binarySearchTree;
+        return output;
     }
 
     /**
      * Returns the height of the tree or -1 if the tree is empty
      */
-    // Need test
-    //TODO Returns only root
     public int height() {
-        return log(size(), 2);
+        // log(size(), 2);
+        int leftDept = 0;
+        int rightDept = 0;
 
-     /*
-        if (binaryTreeNode == null) {
-            return 0;
+        if (getMinHeight(getRoot(), leftDept) > getMaxHeight(getRoot(), rightDept)) {
+            return leftDept;
         } else {
-            int leftDepth = height(binaryTreeNode.getLeftChild());
-            int rightDepth = height(binaryTreeNode.getRightChild());
-
-            if (leftDepth > rightDepth)
-                return (leftDepth++);
-            else
-                return (rightDepth++);
+            return rightDept;
         }
+    }
 
-       */
+    private int getMinHeight(BinaryTreeNode root, int height) {
+        if (root == null) {
+            return height;
+        } else {
+            height++;
+            getMinHeight(root.getLeftChild(), height);
+        }
+        return height;
+    }
 
+    private int getMaxHeight(BinaryTreeNode root, int height) {
+        if (root == null) {
+            return height;
+        } else {
+            height++;
+            getMaxHeight(root.getRightChild(), height);
+        }
+        return height;
     }
 
     private int log(int n, int log) {

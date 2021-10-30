@@ -7,12 +7,12 @@ package tree.util;
  * https://Seahawk.dk
  */
 
-public interface QueueInterface<T> {
-    void enqueue(T element);
-    T dequeue();
-    T first();
+public interface QueueInterface<AnyType> {
+    void enqueue(AnyType element);
+    AnyType dequeue();
+    AnyType first();
     int size();
     boolean isEmpty();
-    int indexOf(T element);
-    boolean contains(T element);
+    int indexOf(AnyType element);
+    boolean contains(AnyType element);
 }

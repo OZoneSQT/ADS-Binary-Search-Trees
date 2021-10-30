@@ -7,9 +7,9 @@ package tree.util;
  * https://Seahawk.dk
  */
 
-public class QueueFIFO<T> implements QueueInterface<T> {
+public class QueueFIFO<AnyType> implements QueueInterface<AnyType> {
 
-    private T[] queue;
+    private AnyType[] queue;
     private int  count;
     private int capacity;
 
@@ -17,9 +17,9 @@ public class QueueFIFO<T> implements QueueInterface<T> {
         this.capacity = capacity;
     }
 
-    public void enqueue(T element) throws IllegalArgumentException, IllegalStateException {
+    public void enqueue(AnyType element) throws IllegalArgumentException, IllegalStateException {
         if(queue == null) {
-            queue = (T[])(new Object[capacity]);
+            queue = (AnyType[])(new Object[capacity]);
         }
         if(element == null) {
             throw new IllegalArgumentException("Null is not allowed");
@@ -30,11 +30,11 @@ public class QueueFIFO<T> implements QueueInterface<T> {
         count++;
     }
 
-    public T dequeue() throws IllegalStateException {
+    public AnyType dequeue() throws IllegalStateException {
         if(count == 0) {
             throw new IllegalStateException("Queue is empty");
         }
-        T genericQueue = queue[0];
+        AnyType genericQueue = queue[0];
         for (int i = 1; i < count; i++) {
             queue[i-1] = queue[i];
         }
@@ -42,7 +42,7 @@ public class QueueFIFO<T> implements QueueInterface<T> {
         return genericQueue;
     }
 
-    public T first() throws IllegalStateException {
+    public AnyType first() throws IllegalStateException {
         if(count == 0) throw new IllegalStateException("Queue is empty");
         return queue[0];
     }
@@ -55,7 +55,7 @@ public class QueueFIFO<T> implements QueueInterface<T> {
         return count == 0;
     }
 
-    public int indexOf(T element) {
+    public int indexOf(AnyType element) {
         if(element == null) {
             for (int i = 0; i < count; i++) {
                 if (queue[i] == null) {
@@ -72,9 +72,9 @@ public class QueueFIFO<T> implements QueueInterface<T> {
         return -1;
     }
 
-    public boolean contains(T element) {
+    public boolean contains(AnyType element) {
         if(element == null) return false;
-        for (T t : queue) {
+        for (AnyType t : queue) {
             if(element.equals(t)) return true;
         }
         return false;

@@ -7,12 +7,12 @@ package tree.binarytree;
  * https://Seahawk.dk
  */
 
-public class BinarySearchTreeNode<T> extends BinaryTreeNode {
+public class BinarySearchTreeNode<AnyType> extends BinaryTreeNode {
 
-    private T element;
+    private AnyType element;
 
-    public BinarySearchTreeNode(int value) {
-        super(value);
+    public BinarySearchTreeNode(AnyType element) {
+        super(element);
     }
 
 }
