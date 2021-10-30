@@ -9,10 +9,10 @@ package tree.binarytree;
 
 import java.util.ArrayList;
 
-public class BinarySearchTree<AnyType> extends BinaryTree {
-    private BinaryTreeNode root;
-    private InsertNode insertNode = new InsertNode();
-    private DeleteNode deleteNode = new DeleteNode();
+public class BinarySearchTree<AnyType> extends BinaryTree<AnyType> {
+    private BinarySearchTreeNode root;
+  //  private InsertNode insertNode = new InsertNode();
+   //  private DeleteNode deleteNode = new DeleteNode();
 
     public BinarySearchTree() {
         super();
@@ -22,48 +22,54 @@ public class BinarySearchTree<AnyType> extends BinaryTree {
      * Add an element to the tree. Do nothing if present
      */
     public void insertElement(AnyType element) {
-        //TODO if not present, call contains
-        root = insertNode.add(element);
+        if (!contains(element)) {
+            this.root = insert(element);
+        }
+    }
+
+    private BinarySearchTreeNode insert(AnyType element) {
+        if (isEmpty()) {
+            setRoot(new BinarySearchTreeNode(element));
+        }
+        
+        //TODO calc location from size
+
+        return root;
     }
 
     /**
      * Remove an element from the tree Do nothing if not present
-     * @param treeRoot
-     * @param value
      */
     public void removeElement(AnyType element) {
-        root = deleteNode.delete(element);
+        if (contains(element)) {
+            root = deleteNode.delete(element);
+            rebalance();
+        }
     }
 
     /**
      * Returns the minimum element of the tree
-     * @param root
-     * @return
      */
     // Need test
-    public int findMin() {
-
-                    //TODO Traverse() or go most to the left
-        return 0;
+    public AnyType findMin() {
+        ArrayList<AnyType> list = super.inOrder();
+        return list.get(0);
     }
 
     /**
      * Returns the maximum element of the tree
-     * @param root
-     * @return
      */
     // Need test
-    public int findMax() {
-
-                //TODO Traverse inorder() or go most to the right
-        return 0;
+    public AnyType findMax() {
+        ArrayList<AnyType> list = super.inOrder();
+        return list.get(list.size());
     }
 
     /**
      * Determines if an element is present in the tree
      */
     public boolean contains(AnyType element) {
-        return false;
+        return super.contains(element);
     }
 
     /**

@@ -7,9 +7,6 @@ package tree.binarytree;
  * https://Seahawk.dk
  */
 
-import tree.util.QueueFIFO;
-import tree.util.QueueInterface;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
