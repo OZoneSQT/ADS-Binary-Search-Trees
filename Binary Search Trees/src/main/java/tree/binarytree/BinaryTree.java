@@ -7,11 +7,13 @@ package tree.binarytree;
  * https://Seahawk.dk
  */
 
+import other.BinaryNode;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BinaryTree<AnyType> {
+public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     private BinaryTreeNode root;
 
     public BinaryTree() {
@@ -20,7 +22,6 @@ public class BinaryTree<AnyType> {
 
     /**
      * Returns a reference to the root or null if tree is empty
-     * @return
      */
     public BinaryTreeNode getRoot() {
         return root;
@@ -28,7 +29,6 @@ public class BinaryTree<AnyType> {
 
     /**
      * Set the root of the tree
-     * @param root
      */
     public void setRoot(BinaryTreeNode root) {
         this.root = root;
@@ -36,7 +36,6 @@ public class BinaryTree<AnyType> {
 
     /**
      * Determines whether the tree is empty
-     * @return
      */
     public boolean isEmpty() {
         return root == null;
@@ -44,7 +43,6 @@ public class BinaryTree<AnyType> {
 
     /**
      * Returns the number of elements in the tree size
-     * @return
      */
     public int size() {
         return inOrder().size();
@@ -52,19 +50,24 @@ public class BinaryTree<AnyType> {
 
     /**
      * Determines if an element is present in the tree
-     * @return
      */
     public boolean contains(AnyType element) {
-        return contains(getRoot(), element);
+        return contains(root, element);
     }
 
     private boolean contains(BinaryTreeNode root, AnyType element) {
         if (root == null) {
             return false;
-        } else if (element.equals(root.getElement())) {
-            return true;
+        }
+
+        int compareResult = element.compareTo(root.getElement());
+
+        if (compareResult < 0) {
+            return contains(root.getLeftChild(), element);
+        } else if (compareResult > 0) {
+            return contains(root.getRightChild(), element);
         } else {
-            return contains(root.getLeftChild(), element) || contains(root.getRightChild(), element);
+            return true;    // match
         }
     }
 
@@ -134,7 +137,6 @@ public class BinaryTree<AnyType> {
     public ArrayList levelOrder() {
         ArrayList<AnyType> output = new ArrayList<>();
 
-
         if (isEmpty()) {
             return null;
         }
@@ -167,34 +169,15 @@ public class BinaryTree<AnyType> {
      */
     public int height() {
         // log(size(), 2);
-        int leftDept = 0;
-        int rightDept = 0;
-
-        if (getMinHeight(getRoot(), leftDept) > getMaxHeight(getRoot(), rightDept)) {
-            return leftDept;
-        } else {
-            return rightDept;
-        }
+        return height(root);
     }
 
-    private int getMinHeight(BinaryTreeNode root, int height) {
+    private int height(BinaryTreeNode<AnyType> root) {
         if (root == null) {
-            return height;
+            return -1;
         } else {
-            height++;
-            getMinHeight(root.getLeftChild(), height);
+            return 1 + Math.max(height(root.getLeftChild()), height(root.getRightChild()));
         }
-        return height;
-    }
-
-    private int getMaxHeight(BinaryTreeNode root, int height) {
-        if (root == null) {
-            return height;
-        } else {
-            height++;
-            getMaxHeight(root.getRightChild(), height);
-        }
-        return height;
     }
 
     private int log(int n, int log) {

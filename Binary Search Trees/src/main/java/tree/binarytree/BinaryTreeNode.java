@@ -7,20 +7,27 @@ package tree.binarytree;
  * https://Seahawk.dk
  */
 
+import other.BinaryNode;
+
 public class BinaryTreeNode<AnyType> {
     private AnyType element;
-    private BinaryTreeNode leftChild, rightChild;
+    private BinaryTreeNode<AnyType> leftChild, rightChild;
 
     public BinaryTreeNode(AnyType element) {
-        super();
         this.element = element;
         this.leftChild = null;
         this.rightChild = null;
     }
 
+    public
+    BinaryTreeNode(AnyType theElement, BinaryTreeNode<AnyType> leftChild, BinaryTreeNode<AnyType> rightChild) {
+        this.element = theElement;
+        this.leftChild = leftChild;
+        this.rightChild = rightChild;
+    }
+
     /**
      * Store the element in the Node
-     * @param newElement
      */
     public void setElement(AnyType newElement) {
         this.element = newElement;
@@ -28,42 +35,36 @@ public class BinaryTreeNode<AnyType> {
 
     /**
      * Returns the element from the Node
-     * @return
      */
-    /* public element getElement() => element = int */
     public AnyType getElement() {
         return element;
     }
 
     /**
      * Add a left child to the Node
-     * @param leftChild
      */
-    public void addLeftChild(final BinaryTreeNode leftChild) {
+    public void addLeftChild(BinaryTreeNode<AnyType> leftChild) {
         this.leftChild = leftChild;
     }
 
     /**
      * Add a right child to the Node
-     * @param rightChild
      */
-    public void addRightChild(BinaryTreeNode rightChild) {
+    public void addRightChild(BinaryTreeNode<AnyType> rightChild) {
         this.rightChild = rightChild;
     }
 
     /**
      * Returns a reference to the left child or null if there is no left child
-     * @return
      */
-    public BinaryTreeNode getLeftChild() {
+    public BinaryTreeNode<AnyType> getLeftChild() {
         return leftChild;
     }
 
     /***
      * Returns a reference to the right child or null if there is no right child
-     * @return
      */
-    public BinaryTreeNode getRightChild() {
+    public BinaryTreeNode<AnyType> getRightChild() {
         return rightChild;
     }
 
