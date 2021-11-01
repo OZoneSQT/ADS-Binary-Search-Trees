@@ -11,6 +11,10 @@ public class BinarySearchTreeNode<AnyType> extends BinaryTreeNode<AnyType> {
 
     private AnyType element;
 
+    public BinarySearchTreeNode(AnyType element) {
+        super(element);
+    }
+
     public BinarySearchTreeNode(AnyType element, BinarySearchTreeNode<AnyType> leftChild, BinarySearchTreeNode<AnyType> rightChild) {
         super(element, leftChild, rightChild);
     }

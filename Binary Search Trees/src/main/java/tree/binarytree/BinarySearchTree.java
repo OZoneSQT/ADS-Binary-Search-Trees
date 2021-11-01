@@ -20,12 +20,12 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
      * Add an element to the tree. Do nothing if present
      */
     public void insertElement(AnyType element) {
-        root = insert(element, root);
+        setRoot(insert(element, root));
     }
 
     private BinarySearchTreeNode<AnyType> insert(AnyType element, BinarySearchTreeNode<AnyType> root) {
         if (root == null) {
-            return new BinarySearchTreeNode<AnyType>(element, null, null);
+            return new BinarySearchTreeNode(element);
         }
 
         int compareResult = element.compareTo(root.getElement());
@@ -55,12 +55,12 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
      * Remove an element from the tree Do nothing if not present
      */
     public void removeElement(AnyType element) {
-        root = remove(element, root);
+        setRoot(remove(element, root));
     }
 
     private BinarySearchTreeNode<AnyType> remove(AnyType element, BinarySearchTreeNode<AnyType> root) {
         if (root == null) {
-            return root;
+            return null;
         }
 
         int compareResult = element.compareTo(root.getElement());
@@ -96,6 +96,37 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
     }
 
     /**
+     * Returns the maximum element of the tree
+     */
+    public BinarySearchTreeNode<AnyType> findMax() {
+        // return findMaxElement();
+        return findMax(root);
+    }
+
+    private BinarySearchTreeNode<AnyType> findMax(BinarySearchTreeNode<AnyType> root) {
+        if (root == null) {
+            return null;
+        }
+
+        return findMax(root, null);
+    }
+
+    private BinarySearchTreeNode<AnyType> findMax(BinarySearchTreeNode<AnyType> root, AnyType element) {
+        if(root.getElement().compareTo(element) >= 0 && root.getRightChild() != null){
+            root = findMax(root.getRightChild(), root.getElement());
+        }
+
+        return root;
+    }
+
+    private BinarySearchTreeNode<AnyType> findMaxElement() {
+        ArrayList<AnyType> tree = inOrder();
+        BinarySearchTreeNode<AnyType> node = new BinarySearchTreeNode<>(tree.get(tree.size()));
+
+        return node;
+    }
+
+    /**
      * Determines if an element is present in the tree
      */
     public boolean contains(AnyType element) {
@@ -107,8 +138,11 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
      */
     public void rebalance() {
         int ALLOWED_IMBALANCE = 1;
-        // rebalance(root, ALLOWED_IMBALANCE);
-        rebalance(root);
+
+        if (root != null) {
+            // rebalance(root, ALLOWED_IMBALANCE);
+            rebalance(root);
+        }
     }
 
     /*

@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
-    private BinaryTreeNode root;
+    private BinaryTreeNode<AnyType> root;
 
     public BinaryTree() {
         this.root = null;
@@ -21,14 +21,14 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     /**
      * Returns a reference to the root or null if tree is empty
      */
-    public BinaryTreeNode getRoot() {
+    public BinaryTreeNode<AnyType> getRoot() {
         return root;
     }
 
     /**
      * Set the root of the tree
      */
-    public void setRoot(BinaryTreeNode root) {
+    public void setRoot(BinaryTreeNode<AnyType> root) {
         this.root = root;
     }
 
@@ -44,6 +44,14 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
      */
     public int size() {
         return inOrder().size();
+    }
+
+    private int size(BinaryTreeNode<AnyType> root){
+        if(root==null) {
+            return -1;
+        } else {
+            return 1 + size(root.getRightChild()) + size(root.getLeftChild());
+        }
     }
 
     /**
@@ -72,18 +80,18 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     /**
      * Returns a inOrder representation of the tree or null if the tree is empty
      */
-    public ArrayList inOrder() {
-        ArrayList<BinaryTreeNode> tree = new ArrayList<>();
+    public ArrayList<AnyType> inOrder() {
+        ArrayList<AnyType> tree = new ArrayList<>();
         if (isEmpty()) {
             return null;
         }
         return traverseInOrder(root, tree);
     }
 
-    private ArrayList traverseInOrder(BinaryTreeNode root, ArrayList tree) {
+    private ArrayList<AnyType> traverseInOrder(BinaryTreeNode<AnyType> root, ArrayList<AnyType> tree) {
         if (root != null) {
             traverseInOrder(root.getLeftChild(), tree);
-            tree.add(root);
+            tree.add(root.getElement());
             traverseInOrder(root.getRightChild(), tree);
         }
         return tree;
@@ -92,7 +100,7 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     /**
      * Returns a preOrder representation of the tree or null if the tree is empty
      */
-    public ArrayList preOrder() {
+    public ArrayList<AnyType> preOrder() {
         ArrayList<AnyType> tree = new ArrayList<>();
         if (isEmpty()) {
             return null;
@@ -100,7 +108,7 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
         return traversePreOrder(root, tree);
     }
 
-    private ArrayList traversePreOrder(BinaryTreeNode root, ArrayList tree) {
+    private ArrayList<AnyType> traversePreOrder(BinaryTreeNode<AnyType> root, ArrayList<AnyType> tree) {
         if (root != null) {
             tree.add(root.getElement());
             traversePreOrder(root.getLeftChild(), tree);
@@ -112,7 +120,7 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     /**
      * Returns a postOrder representation of the tree or null if the tree is empty
      */
-    public ArrayList postOrder() {
+    public ArrayList<AnyType> postOrder() {
         ArrayList<AnyType> output = new ArrayList<>();
         if (isEmpty()) {
             return null;
@@ -120,7 +128,7 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
         return traversePostOrder(root, output);
     }
 
-    private ArrayList traversePostOrder(BinaryTreeNode root, ArrayList output) {
+    private ArrayList<AnyType> traversePostOrder(BinaryTreeNode<AnyType> root, ArrayList<AnyType> output) {
         if (root != null) {
             traversePreOrder(root.getLeftChild(), output);
             traversePreOrder(root.getRightChild(), output);
@@ -132,7 +140,7 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     /**
      * Returns a level Order representation of the tree or null if the tree is empty
      */
-    public ArrayList levelOrder() {
+    public ArrayList<AnyType> levelOrder() {
         ArrayList<AnyType> output = new ArrayList<>();
 
         if (isEmpty()) {
@@ -141,13 +149,13 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
         return traverseLevelOrder(root, output);
     }
 
-    private ArrayList traverseLevelOrder(BinaryTreeNode root, ArrayList output) {
+    private ArrayList<AnyType> traverseLevelOrder(BinaryTreeNode<AnyType> root, ArrayList<AnyType> output) {
         Queue<AnyType> queue = new LinkedList<>();
         if (root == null) {
             return output;
         }
 
-        queue.add((AnyType) root.getElement());
+        queue.add(root.getElement());
         while (!queue.isEmpty()) {
             AnyType tmpNode = queue.poll();
             if (tmpNode != null) {

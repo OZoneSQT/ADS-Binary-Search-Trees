@@ -1,129 +1,27 @@
 package tree.binarytree;
 
-/*
- * Copyright (c) 2021
- *
- * OZ1SQT, Michel S. E. Sommer
- * https://Seahawk.dk
- */
-
-import org.junit.Rule;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.migrationsupport.rules.EnableRuleMigrationSupport;
-import org.junit.rules.ExpectedException;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.*;
 
-@EnableRuleMigrationSupport
-class BinarySearchTreeTest extends TestBase {
+class BinarySearchTreeTest {
 
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
+    @BeforeEach
+    void setUp() {
+    }
 
-    @Test
-    public void addFourNodes() {
-        BinaryTreeNode root = insertNode.add(null, 6);
-
-        binarySearchTree.addElement(null,6);
-        assertEquals(6, root.getElement());
-
-        binarySearchTree.addElement(root, 4);
-        assertEquals(4, root.getLeftChild().getElement());
-
-        binarySearchTree.addElement(root, 4);
-        assertEquals(4, root.getLeftChild().getElement());
-
-        binarySearchTree.addElement(root, 10);
-        assertEquals(10, root.getRightChild().getElement());
-
+    @AfterEach
+    void tearDown() {
     }
 
     @Test
-    void deleteLeftLeaf() {
-        BinaryTreeNode root = insertNode.add(null, 6);
-
-        binarySearchTree.addElement(root, 4);
-        binarySearchTree.addElement(root, 2);
-        binarySearchTree.addElement(root, 10);
-        binarySearchTree.removeElement(root, 2);
-
-        BinaryTreeNode found2 = binarySearchTree.searchKey(root, 2);
-        assertNull(found2);
+    void insertElement() {
     }
 
     @Test
-    void deleteRightLeaf() {
-        BinaryTreeNode root = insertNode.add(null, 6);
-
-        binarySearchTree.addElement(root, 4);
-        binarySearchTree.addElement(root, 2);
-        binarySearchTree.addElement(root, 10);
-        binarySearchTree.removeElement(root, 10);
-
-        BinaryTreeNode found10 = binarySearchTree.searchKey(root, 10);
-        assertNull(found10);
-    }
-
-    @Test
-    void deleteLeftSubtree() {
-        BinaryTreeNode root = insertNode.add(null, 6);
-
-        binarySearchTree.addElement(root, 4);
-        binarySearchTree.addElement(root, 2);
-        binarySearchTree.addElement(root, 10);
-        binarySearchTree.removeElement(root, 4);
-
-        BinaryTreeNode found4 = binarySearchTree.searchKey(root, 4);
-        assertNull(found4);
-    }
-
-    @Test
-    void deleteRightSubtree() {
-        BinaryTreeNode root = insertNode.add(null, 6);
-
-        binarySearchTree.addElement(root, 4);
-        binarySearchTree.addElement(root, 2);
-        binarySearchTree.addElement(root, 10);
-        binarySearchTree.addElement(root, 8);
-        binarySearchTree.removeElement(root, 10);
-
-        BinaryTreeNode found10 = binarySearchTree.searchKey(root, 10);
-        assertNull(found10);
-    }
-
-    @Test
-    void deleteFullSubtree() {
-        expectedException.expect(NullPointerException.class);
-
-        BinaryTreeNode root = insertNode.add(null, 6);
-
-        binarySearchTree.addElement(root, 4);
-        binarySearchTree.addElement(root, 2);
-        binarySearchTree.addElement(root, 10);
-        binarySearchTree.addElement(root, 8);
-        binarySearchTree.addElement(root, 11);
-        binarySearchTree.removeElement(root, 10);
-
-        BinaryTreeNode found10 = binarySearchTree.searchKey(root, 10);
-
-    }
-
-    @Test
-    void removeAllOccurrences() {
-    }
-
-    @Test
-    void getRoot() {
-    }
-
-    @Test
-    void isEmpty() {
-    }
-
-    @Test
-    void findMax() {
+    void removeElement() {
     }
 
     @Test
@@ -131,19 +29,14 @@ class BinarySearchTreeTest extends TestBase {
     }
 
     @Test
-    void removeMin() {
+    void findMax() {
     }
 
     @Test
-    void removeMax() {
+    void contains() {
     }
 
     @Test
-    void searchKey() {
+    void rebalance() {
     }
-
-    @Test
-    void testToString() {
-    }
-
 }
