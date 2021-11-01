@@ -19,8 +19,7 @@ public class BinaryTreeNode<AnyType> {
         this.rightChild = null;
     }
 
-    public
-    BinaryTreeNode(AnyType theElement, BinaryTreeNode<AnyType> leftChild, BinaryTreeNode<AnyType> rightChild) {
+    public BinaryTreeNode(AnyType theElement, BinaryTreeNode<AnyType> leftChild, BinaryTreeNode<AnyType> rightChild) {
         this.element = theElement;
         this.leftChild = leftChild;
         this.rightChild = rightChild;

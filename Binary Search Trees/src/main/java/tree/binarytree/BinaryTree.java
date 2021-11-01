@@ -7,8 +7,6 @@ package tree.binarytree;
  * https://Seahawk.dk
  */
 
-import other.BinaryNode;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -172,7 +170,7 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
         return height(root);
     }
 
-    private int height(BinaryTreeNode<AnyType> root) {
+    public int height(BinaryTreeNode<AnyType> root) {
         if (root == null) {
             return -1;
         } else {

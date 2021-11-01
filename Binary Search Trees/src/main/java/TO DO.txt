@@ -1,5 +1,5 @@
 //TODO
- use E insted of integer and implement Comparable
+use AnyType instead of integer and implement Comparable
 
 Test:
 
@@ -17,6 +17,7 @@ BinarySearchTree
                     removeMax()
 
                     searchKey()
+
                     https://www.softwaretestinghelp.com/binary-search-tree-in-java/
                     https://stackoverflow.com/questions/53385299/search-key-for-a-binary-search-tree-populated-by-text-file-java
                     https://www.geeksforgeeks.org/iterative-search-for-a-key-x-in-binary-tree/

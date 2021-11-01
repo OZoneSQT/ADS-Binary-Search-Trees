@@ -22,9 +22,6 @@ public class TestBase {
     protected BinarySearchTree binarySearchTree = new BinarySearchTree();
     protected BinaryTree binaryTree = new BinaryTree();
 
-    protected DeleteNode deleteNode = new DeleteNode();
-    protected InsertNode insertNode = new InsertNode();
-
     @Rule
     public TestName testName = new TestName();
 
