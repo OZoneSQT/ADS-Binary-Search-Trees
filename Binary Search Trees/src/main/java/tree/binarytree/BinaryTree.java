@@ -55,7 +55,7 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
         return contains(root, element);
     }
 
-    private boolean contains(BinaryTreeNode root, AnyType element) {
+    private boolean contains(BinaryTreeNode<AnyType> root, AnyType element) {
         if (root == null) {
             return false;
         }
@@ -79,14 +79,14 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
         if (isEmpty()) {
             return null;
         }
-        return inOrder(root, tree);
+        return traverseInOrder(root, tree);
     }
 
-    private ArrayList inOrder(BinaryTreeNode root, ArrayList tree) {
+    private ArrayList traverseInOrder(BinaryTreeNode root, ArrayList tree) {
         if (root != null) {
-            inOrder(root.getLeftChild(), tree);
+            traverseInOrder(root.getLeftChild(), tree);
             tree.add(root);
-            inOrder(root.getRightChild(), tree);
+            traverseInOrder(root.getRightChild(), tree);
         }
         return tree;
     }
@@ -99,14 +99,14 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
         if (isEmpty()) {
             return null;
         }
-        return preOrder(root, tree);
+        return traversePreOrder(root, tree);
     }
 
-    private ArrayList preOrder(BinaryTreeNode root, ArrayList tree) {
+    private ArrayList traversePreOrder(BinaryTreeNode root, ArrayList tree) {
         if (root != null) {
             tree.add(root.getElement());
-            preOrder(root.getLeftChild(), tree);
-            preOrder(root.getRightChild(), tree);
+            traversePreOrder(root.getLeftChild(), tree);
+            traversePreOrder(root.getRightChild(), tree);
         }
         return tree;
     }
@@ -119,13 +119,13 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
         if (isEmpty()) {
             return null;
         }
-        return postOrder(root, output);
+        return traversePostOrder(root, output);
     }
 
-    private ArrayList postOrder(BinaryTreeNode root, ArrayList output) {
+    private ArrayList traversePostOrder(BinaryTreeNode root, ArrayList output) {
         if (root != null) {
-            preOrder(root.getLeftChild(), output);
-            preOrder(root.getRightChild(), output);
+            traversePreOrder(root.getLeftChild(), output);
+            traversePreOrder(root.getRightChild(), output);
             output.add(root.getElement());
         }
         return output;
@@ -140,10 +140,10 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
         if (isEmpty()) {
             return null;
         }
-        return levelOrder(root, output);
+        return traverseLevelOrder(root, output);
     }
 
-    private ArrayList levelOrder(BinaryTreeNode root, ArrayList output) {
+    private ArrayList traverseLevelOrder(BinaryTreeNode root, ArrayList output) {
         Queue<AnyType> queue = new LinkedList<>();
         if (root == null) {
             return output;

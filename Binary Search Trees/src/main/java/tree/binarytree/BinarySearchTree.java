@@ -63,6 +63,9 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
             return root;
         }
 
+        // http://users.cis.fiu.edu/~weiss/dsaajava3/code/BinarySearchTree.java
+        // http://users.cis.fiu.edu/~weiss/dsaajava3/code/AvlTree.java
+
         int compareResult = element.compareTo(root.getElement());
 
         if (compareResult < 0) {
