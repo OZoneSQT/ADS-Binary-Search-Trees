@@ -7,6 +7,7 @@ package tree.binarytree;
  * https://Seahawk.dk
  */
 
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;

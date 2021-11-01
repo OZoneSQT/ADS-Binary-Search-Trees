@@ -7,6 +7,7 @@ package tree.binarytree;
  * https://Seahawk.dk
  */
 
+
 public class BinarySearchTreeNode<AnyType> extends BinaryTreeNode<AnyType> {
 
     private AnyType element;
