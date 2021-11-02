@@ -24,13 +24,13 @@ public class BinarySearchTreeNode<AnyType> extends BinaryTreeNode<AnyType> {
      * Returns a reference to the left child or null if there is no left child
      */
     public BinarySearchTreeNode<AnyType> getLeftChild() {
-        return getLeftChild();
+        return (BinarySearchTreeNode) super.getLeftChild();
     }
 
     /***
      * Returns a reference to the right child or null if there is no right child
      */
     public BinarySearchTreeNode<AnyType> getRightChild() {
-        return getRightChild();
+        return (BinarySearchTreeNode) super.getRightChild();
     }
 }
