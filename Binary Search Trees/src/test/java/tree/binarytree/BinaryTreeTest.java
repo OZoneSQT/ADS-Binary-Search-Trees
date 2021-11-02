@@ -101,7 +101,7 @@ class BinaryTreeTest {
         root.addLeftChild(new BinaryTreeNode("B", new BinaryTreeNode("C"), new BinaryTreeNode("D")));
         System.out.println(tree.postOrder());
     }
-/*
+
     @Test
     void levelOrder() {
         BinaryTreeNode root = new BinaryTreeNode("A");
@@ -111,7 +111,7 @@ class BinaryTreeTest {
         root.addLeftChild(new BinaryTreeNode("B", new BinaryTreeNode("C"), new BinaryTreeNode("D")));
         System.out.println(tree.levelOrder());
     }
-*/
+
     @Test
     void height() {
         BinaryTreeNode root = new BinaryTreeNode("A");

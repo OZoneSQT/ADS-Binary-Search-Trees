@@ -6,12 +6,10 @@ https://github.com/DanielRailean/ADS1-A2021/tree/main/Assignment1/Test
 
 Test:
 
-BinaryTree
-                    levelOrder() method
-BinarySearchTree
-                    insertElement(AnyType element)
-                    removeElement(AnyType element)
-                    BinarySearchTreeNode<AnyType> findMin()
-                    BinarySearchTreeNode<AnyType> findMax()
-                    contains(AnyType element)
-                    rebalance()
+    BinarySearchTree
+                        insertElement(AnyType element)
+                        removeElement(AnyType element)
+                        BinarySearchTreeNode<AnyType> findMin()
+                        BinarySearchTreeNode<AnyType> findMax()
+                        contains(AnyType element)
+                        rebalance()

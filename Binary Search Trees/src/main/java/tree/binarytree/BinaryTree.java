@@ -8,9 +8,10 @@ package tree.binarytree;
  */
 
 
+import tree.util.QueueFIFO;
+import tree.util.QueueInterface;
+
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     private BinaryTreeNode<AnyType> root;
@@ -49,8 +50,8 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     }
 
     private int size(BinaryTreeNode<AnyType> root){
-        if(root==null) {
-            return -1;
+        if(root == null) {
+            return 0;
         } else {
             return 1 + size(root.getRightChild()) + size(root.getLeftChild());
         }
@@ -143,33 +144,32 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
      * Returns a level Order representation of the tree or null if the tree is empty
      */
     public ArrayList<AnyType> levelOrder() {
-        ArrayList<AnyType> output = new ArrayList<>();
-
         if (isEmpty()) {
             return null;
         }
-        return traverseLevelOrder(root, output);
+
+        QueueInterface<BinaryTreeNode<AnyType>> fifo = new QueueFIFO<>(41);
+        ArrayList<AnyType> list = new ArrayList<>();
+        fifo.enqueue(root);
+
+        return traverseLevelOrder(list, fifo);
     }
 
-    private ArrayList<AnyType> traverseLevelOrder(BinaryTreeNode<AnyType> root, ArrayList<AnyType> output) {
-        Queue<AnyType> queue = new LinkedList<>();
-        if (root == null) {
-            return output;
+    private ArrayList<AnyType> traverseLevelOrder(ArrayList<AnyType> list, QueueInterface<BinaryTreeNode<AnyType>> fifo) {
+
+        while (!fifo.isEmpty()) {
+            BinaryTreeNode tmpNode = fifo.dequeue();
+            if (tmpNode.getLeftChild() != null) {
+                fifo.enqueue(tmpNode.getLeftChild());
+            }
+            if (tmpNode.getRightChild() != null) {
+                fifo.enqueue(tmpNode.getRightChild());
+            }
+
+            list.add((AnyType) tmpNode.getElement());
         }
 
-        queue.add(root.getElement());
-        while (!queue.isEmpty()) {
-            AnyType tmpNode = queue.poll();
-            if (tmpNode != null) {
-                queue.add(tmpNode);
-            }
-            if (tmpNode != null) {
-                queue.add(tmpNode);
-            }
-            output.add(tmpNode);
-        }
-
-        return output;
+        return list;
     }
 
     /**
