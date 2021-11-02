@@ -14,7 +14,6 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
 
     public BinarySearchTree() {
         super();
-        root = null;
     }
 
     /**
