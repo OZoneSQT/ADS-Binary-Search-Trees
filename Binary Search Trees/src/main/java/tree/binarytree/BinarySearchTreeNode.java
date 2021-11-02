@@ -32,4 +32,13 @@ public class BinarySearchTreeNode<AnyType> extends BinaryTreeNode<AnyType> {
     public BinarySearchTreeNode<AnyType> getRightChild() {
         return (BinarySearchTreeNode) super.getRightChild();
     }
+
+    public void addLeftChild(AnyType element) {
+        super.addLeftChild(new BinarySearchTreeNode<AnyType>(element));
+    }
+
+    public void addRightChild(AnyType element) {
+        super.addRightChild(new BinarySearchTreeNode<AnyType>(element));
+    }
+
 }

@@ -14,6 +14,7 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
 
     public BinarySearchTree() {
         super();
+        root = null;
     }
 
     /**
@@ -28,15 +29,21 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
             return new BinarySearchTreeNode(element);
         }
 
+        //TODO Insert keeps calling root
+        /*
+         *   ensure new node is set as root
+         */
+
         int compareResult = element.compareTo(root.getElement());
 
         if (compareResult < 0) {
-            root.addLeftChild(insert(element, root));
-        } else if (compareResult > 0) {
-            root.addRightChild(insert(element, root));
+            root.addLeftChild(insert(element, root.getLeftChild()));
+        } else if (compareResult >= 0) {
+            root.addRightChild(insert(element, root.getRightChild()));
         } else {
             ;
         }
+
         return root;
     }
 
