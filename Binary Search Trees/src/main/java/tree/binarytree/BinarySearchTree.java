@@ -7,7 +7,6 @@ package tree.binarytree;
  * https://Seahawk.dk
  */
 
-
 import java.util.ArrayList;
 
 public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> extends BinaryTree<AnyType> {

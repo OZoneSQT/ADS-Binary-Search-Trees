@@ -7,7 +7,6 @@ package tree.binarytree;
  * https://Seahawk.dk
  */
 
-
 public class BinaryTreeNode<AnyType> {
     private AnyType element;
     private BinaryTreeNode<AnyType> leftChild, rightChild;

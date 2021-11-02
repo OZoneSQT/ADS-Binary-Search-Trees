@@ -7,7 +7,6 @@ package tree.binarytree;
  * https://Seahawk.dk
  */
 
-
 import tree.util.QueueFIFO;
 import tree.util.QueueInterface;
 

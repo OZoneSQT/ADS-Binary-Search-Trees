@@ -7,7 +7,6 @@ package tree;
  * https://Seahawk.dk
  */
 
-
 import tree.binarytree.BinarySearchTree;
 import tree.binarytree.BinaryTreeNode;
 
