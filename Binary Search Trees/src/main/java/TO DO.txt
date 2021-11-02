@@ -7,17 +7,11 @@ https://github.com/DanielRailean/ADS1-A2021/tree/main/Assignment1/Test
 Test:
 
 BinaryTree
-                    contains()
-                    height()
-
+                    levelOrder() method
 BinarySearchTree
-                    removeAllOccurrences()
-                    getRoot()
-                    isEmpty()
-                    findMax()
-                    findMin()
-                    removeMin()
-                    removeMax()
-
-                    searchKey()
-
+                    insertElement(AnyType element)
+                    removeElement(AnyType element)
+                    BinarySearchTreeNode<AnyType> findMin()
+                    BinarySearchTreeNode<AnyType> findMax()
+                    contains(AnyType element)
+                    rebalance()

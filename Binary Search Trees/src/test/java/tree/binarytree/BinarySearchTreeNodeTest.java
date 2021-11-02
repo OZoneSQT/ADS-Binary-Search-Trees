@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class BinarySearchTreeNodeTest {
     @Rule

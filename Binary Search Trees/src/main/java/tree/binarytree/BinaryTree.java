@@ -45,6 +45,7 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
      */
     public int size() {
         return inOrder().size();
+        // return size(root);
     }
 
     private int size(BinaryTreeNode<AnyType> root){
