@@ -7,6 +7,7 @@ package tree.binarytree;
  * https://Seahawk.dk
  */
 
+import javax.lang.model.element.Element;
 import java.util.ArrayList;
 
 public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> extends BinaryTree<AnyType> {
@@ -20,8 +21,8 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
     /**
      * Add an element to the tree. Do nothing if present
      */
-    public void insertElement(AnyType element) {
-        setRoot(insert(element, root));
+    public void insertElement(Element element) {
+        setRoot(insert((AnyType) element, root));
     }
 
     private BinarySearchTreeNode<AnyType> insert(AnyType element, BinarySearchTreeNode<AnyType> root) {
@@ -125,14 +126,14 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
 
         return root;
     }
-
+/*
     private BinarySearchTreeNode<AnyType> findMaxElement() {
         ArrayList<AnyType> tree = inOrder();
         BinarySearchTreeNode<AnyType> node = new BinarySearchTreeNode<>(tree.get(tree.size()));
 
         return node;
     }
-
+*/
     /**
      * Determines if an element is present in the tree
      */
@@ -156,7 +157,7 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
      * Rebalance using an inorder "divide and conquer" array then put into the tree again
      */
     private void rebalance(BinarySearchTreeNode<AnyType> root) {
-        ArrayList<AnyType> tree = inOrder();
+        ArrayList<Element> tree = inOrder();
         int center = tree.size() / 2;
 
         // if equal length, select element to the right of center (to fill up from left)

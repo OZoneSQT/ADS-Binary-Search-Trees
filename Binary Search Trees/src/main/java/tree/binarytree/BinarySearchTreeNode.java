@@ -7,38 +7,38 @@ package tree.binarytree;
  * https://Seahawk.dk
  */
 
-public class BinarySearchTreeNode<AnyType> extends BinaryTreeNode<AnyType> {
+public class BinarySearchTreeNode<Element> extends BinaryTreeNode<Element> {
 
-    private AnyType element;
+    private Element element;
 
-    public BinarySearchTreeNode(AnyType element) {
+    public BinarySearchTreeNode(Element element) {
         super(element);
     }
 
-    public BinarySearchTreeNode(AnyType element, BinarySearchTreeNode<AnyType> leftChild, BinarySearchTreeNode<AnyType> rightChild) {
+    public BinarySearchTreeNode(Element element, BinarySearchTreeNode<Element> leftChild, BinarySearchTreeNode<Element> rightChild) {
         super(element, leftChild, rightChild);
     }
 
     /**
      * Returns a reference to the left child or null if there is no left child
      */
-    public BinarySearchTreeNode<AnyType> getLeftChild() {
+    public BinarySearchTreeNode<Element> getLeftChild() {
         return (BinarySearchTreeNode) super.getLeftChild();
     }
 
     /***
      * Returns a reference to the right child or null if there is no right child
      */
-    public BinarySearchTreeNode<AnyType> getRightChild() {
+    public BinarySearchTreeNode<Element> getRightChild() {
         return (BinarySearchTreeNode) super.getRightChild();
     }
 
-    public void addLeftChild(AnyType element) {
-        super.addLeftChild(new BinarySearchTreeNode<AnyType>(element));
+    public void addLeftChild(Element element) {
+        super.addLeftChild(new BinarySearchTreeNode<Element>(element));
     }
 
-    public void addRightChild(AnyType element) {
-        super.addRightChild(new BinarySearchTreeNode<AnyType>(element));
+    public void addRightChild(Element element) {
+        super.addRightChild(new BinarySearchTreeNode<Element>(element));
     }
 
 }

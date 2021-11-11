@@ -73,7 +73,7 @@ class BinaryTreeNodeTest {
         BinaryTreeNode node = null;
         node = new BinaryTreeNode(3, null, new BinaryTreeNode(7));
         assertNull(node.getRightChild().getLeftChild());
-        assertEquals(node.getRightChild().getRightChild().getElement(), 11);
+        assertNull(node.getRightChild().getRightChild());
         assertEquals(node.getRightChild().getElement(), 7);
     }
 }
