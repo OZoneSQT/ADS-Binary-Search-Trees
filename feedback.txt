@@ -1,13 +1,20 @@
-I can't run my test on your code since you let your public operations return
-BinaryTreeNodes objects rather than elements object (of the appropriate type <E>).
+I can't run my test on your code since you
+let your public operations return
+BinaryTreeNodes objects rather than elements
+object (of the appropriate type <E>).
 
-The user of your api should not bother with extracting the element from treeNodes
+The user of your api should not bother with
+extracting the element from treeNodes
 (and should not even know about tree nodes).
 
 
-Look at your insert or remove operation: here you correctly take an element of
-any type - you do not require the user to pack it into
+
+Look at your insert or remove operation: here
+you correctly take an element of any type
+- you do not require the user to pack it into
 a binaryTreeNode object.
 
 
-Please rehandin the project with the right return types so I can run the tests.
+
+Please rehandin the project with the right
+return types so I can run the tests.

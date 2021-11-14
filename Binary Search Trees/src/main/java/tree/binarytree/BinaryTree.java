@@ -10,7 +10,6 @@ package tree.binarytree;
 import tree.util.QueueFIFO;
 import tree.util.QueueInterface;
 
-import javax.lang.model.element.Element;
 import java.util.ArrayList;
 
 public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
@@ -83,22 +82,26 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     /**
      * Returns a inOrder representation of the tree or null if the tree is empty
      */
-    public ArrayList<Element> inOrder() {
+    /*
+    public ArrayList<AnyType> inOrder() {
+        ArrayList<Element> resultArray = new ArrayList<>();
+        ArrayList<AnyType> tempArray = inOrderArray();
+
+        for (int i = 0; i < tempArray.size(); i++) {
+            AnyType temp = tempArray.get(i);
+            resultArray.add(temp.get(i).getElement();
+        }
+
+        return resultArray;
+    }
+    */
+
+    public ArrayList<AnyType> inOrder() {
+        ArrayList<AnyType> tree = new ArrayList<>();
         if (isEmpty()) {
             return null;
         }
-
-        ArrayList<Element> output = new ArrayList<>();
-        ArrayList<AnyType> tree = new ArrayList<>();
-        ArrayList<AnyType> temp = traverseInOrder(root, tree);
-
-        //TODO FIX output element from node
-        for (int i = 0; i < tree.size(); i++) {
-            BinaryTreeNode<AnyType> node = temp.get(i);
-            output.add(node.getElement());
-        }
-
-        return output;
+        return traverseInOrder(root, tree);
     }
 
     private ArrayList<AnyType> traverseInOrder(BinaryTreeNode<AnyType> root, ArrayList<AnyType> tree) {
@@ -113,21 +116,26 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     /**
      * Returns a preOrder representation of the tree or null if the tree is empty
      */
-    public ArrayList<Element> preOrder() {
+    /*
+    public ArrayList<AnyType> preOrder() {
+        ArrayList<Element> resultArray = new ArrayList<>();
+        ArrayList<AnyType> tempArray = preOrderArray();
+
+        for (int i = 0; i < tempArray.size(); i++) {
+            AnyType temp = tempArray.get(i);
+            resultArray.add(temp.get(i).getElement();
+        }
+
+        return resultArray;
+    }
+    */
+
+    public ArrayList<AnyType> preOrder() {
+        ArrayList<AnyType> tree = new ArrayList<>();
         if (isEmpty()) {
             return null;
         }
-
-        ArrayList<Element> output = new ArrayList<>();
-        ArrayList<AnyType> tree = new ArrayList<>();
-        ArrayList<AnyType> temp = traversePreOrder(root, tree);
-
-        //TODO FIX output element from node
-        for (int i = 0; i < tree.size(); i++) {
-            output.add((Element) temp.get(i));
-        }
-
-        return output;
+        return traversePreOrder(root, tree);
     }
 
     private ArrayList<AnyType> traversePreOrder(BinaryTreeNode<AnyType> root, ArrayList<AnyType> tree) {
@@ -142,59 +150,70 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     /**
      * Returns a postOrder representation of the tree or null if the tree is empty
      */
+    /*
     public ArrayList<Element> postOrder() {
+        ArrayList<Element> resultArray = new ArrayList<>();
+        ArrayList<AnyType> tempArray = postOrderArray();
+
+        for (int i = 0; i < tempArray.size(); i++) {
+            AnyType temp = tempArray.get(i);
+            resultArray.add(temp.get(i).getElement();
+        }
+
+        return resultArray;
+    }
+    */
+
+    public ArrayList<AnyType> postOrder() {
+        ArrayList<AnyType> output = new ArrayList<>();
         if (isEmpty()) {
             return null;
         }
-
-        ArrayList<Element> output = new ArrayList<>();
-        ArrayList<AnyType> list = new ArrayList<>();
-        ArrayList<AnyType> temp = traversePostOrder(root, list);
-
-        //TODO FIX output element from node
-        for (int i = 0; i < list.size(); i++) {
-            output.add((Element) temp.get(i));
-        }
-
-        return output;
+        return traversePostOrder(root, output);
     }
 
-    private ArrayList<AnyType> traversePostOrder(BinaryTreeNode<AnyType> root, ArrayList<AnyType> list) {
+    private ArrayList<AnyType> traversePostOrder(BinaryTreeNode<AnyType> root, ArrayList<AnyType> output) {
         if (root != null) {
-            traversePreOrder(root.getLeftChild(), list);
-            traversePreOrder(root.getRightChild(), list);
-            list.add(root.getElement());
+            traversePreOrder(root.getLeftChild(), output);
+            traversePreOrder(root.getRightChild(), output);
+            output.add(root.getElement());
         }
-        return list;
+        return output;
     }
 
     /**
      * Returns a level Order representation of the tree or null if the tree is empty
      */
+    /*
     public ArrayList<Element> levelOrder() {
+        ArrayList<Element> resultArray = new ArrayList<>();
+        ArrayList<AnyType> tempArray = levelOrderArray();
+
+        for (int i = 0; i < tempArray.size(); i++) {
+            AnyType temp = tempArray.get(i);
+            resultArray.add(temp.get(i).getElement();
+        }
+
+        return resultArray;
+    }
+    */
+
+    public ArrayList<AnyType> levelOrder() {
         if (isEmpty()) {
             return null;
         }
 
         QueueInterface<BinaryTreeNode<AnyType>> fifo = new QueueFIFO<>(41);
+        ArrayList<AnyType> list = new ArrayList<>();
         fifo.enqueue(root);
 
-        ArrayList<Element> output = new ArrayList<>();
-        ArrayList<AnyType> list = new ArrayList<>();
-        ArrayList<AnyType> temp = traverseLevelOrder(list, fifo);
-
-        //TODO FIX output element from node
-        for (int i = 0; i < list.size(); i++) {
-            output.add((Element) temp.get(i));
-        }
-
-        return output;
+        return traverseLevelOrder(list, fifo);
     }
 
     private ArrayList<AnyType> traverseLevelOrder(ArrayList<AnyType> list, QueueInterface<BinaryTreeNode<AnyType>> fifo) {
 
         while (!fifo.isEmpty()) {
-            BinaryTreeNode<AnyType> tmpNode = fifo.dequeue();
+            BinaryTreeNode tmpNode = fifo.dequeue();
             if (tmpNode.getLeftChild() != null) {
                 fifo.enqueue(tmpNode.getLeftChild());
             }
@@ -202,7 +221,7 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
                 fifo.enqueue(tmpNode.getRightChild());
             }
 
-            list.add((AnyType) tmpNode);
+            list.add((AnyType) tmpNode.getElement());
         }
 
         return list;
