@@ -22,7 +22,7 @@ class BinaryTreeTest {
     void getRoot() {
         BinaryTreeNode node = null;
         BinaryTree tree = new BinaryTree();
-        node = tree.getRoot();
+        node = tree.getRootNode();
         assertNull(node);
         tree.setRoot(new BinaryTreeNode("F"));
         assertNotNull(tree.getRoot());
@@ -33,8 +33,8 @@ class BinaryTreeTest {
         BinaryTreeNode root = new BinaryTreeNode("F");
         BinaryTree tree = new BinaryTree();
         tree.setRoot(root);
-        assertEquals(root, tree.getRoot());
-        assertEquals(root.getElement(), tree.getRoot().getElement());
+        assertEquals(root, tree.getRootNode());
+        assertEquals(root.getElement(), tree.getRoot());
     }
 
     @Test
@@ -52,10 +52,11 @@ class BinaryTreeTest {
         BinaryTree tree = new BinaryTree();
         assertTrue(tree.isEmpty());
         Assertions.assertThrows(NullPointerException.class, () -> {
-            tree.size();});
+            tree.size();
+        });
         tree.setRoot(root);
         assertFalse(tree.isEmpty());
-    //    assertEquals(tree.size(), 1);
+        assertEquals(tree.size(), 1);
     }
 
     @Test
@@ -89,7 +90,7 @@ class BinaryTreeTest {
         assertTrue(tree.isEmpty());
         tree.setRoot(root);
         root.addLeftChild(new BinaryTreeNode("B", new BinaryTreeNode("C"), new BinaryTreeNode("D")));
-    //    System.out.println(tree.preOrder());
+        System.out.println(tree.preOrder());
     }
 
     @Test
@@ -99,7 +100,7 @@ class BinaryTreeTest {
         assertTrue(tree.isEmpty());
         tree.setRoot(root);
         root.addLeftChild(new BinaryTreeNode("B", new BinaryTreeNode("C"), new BinaryTreeNode("D")));
-   //     System.out.println(tree.postOrder());
+        System.out.println(tree.postOrder());
     }
 
     @Test
@@ -109,7 +110,7 @@ class BinaryTreeTest {
         assertTrue(tree.isEmpty());
         tree.setRoot(root);
         root.addLeftChild(new BinaryTreeNode("B", new BinaryTreeNode("C"), new BinaryTreeNode("D")));
-   //     System.out.println(tree.levelOrder());
+        System.out.println(tree.levelOrder());
     }
 
     @Test
@@ -119,8 +120,7 @@ class BinaryTreeTest {
         assertTrue(tree.isEmpty());
         tree.setRoot(root);
         root.addLeftChild(new BinaryTreeNode("B", new BinaryTreeNode("C"), new BinaryTreeNode("D")));
-        // System.out.println(tree.height());
+        System.out.println(tree.height());
         assertEquals(tree.height(), 2);
     }
-
 }

@@ -8,8 +8,11 @@ package tree.binarytree;
  */
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
-public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> extends BinaryTree<AnyType> {
+public class BinarySearchTree<Element extends Comparable<? super Element>> extends BinaryTree<Element> {
     private BinarySearchTreeNode root;
 
     public BinarySearchTree() {
@@ -19,11 +22,11 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
     /**
      * Add an element to the tree. Do nothing if present
      */
-    public void insertElement(AnyType element) {
+    public void insertElement(Element element) {
         setRoot(insert(element, root));
     }
 
-    private BinarySearchTreeNode<AnyType> insert(AnyType element, BinarySearchTreeNode<AnyType> root) {
+    private BinarySearchTreeNode<Element> insert(Element element, BinarySearchTreeNode<Element> root) {
         if (root == null) {
             return new BinarySearchTreeNode(element);
         }
@@ -60,11 +63,11 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
     /**
      * Remove an element from the tree Do nothing if not present
      */
-    public void removeElement(AnyType element) {
+    public void removeElement(Element element) {
         setRoot(remove(element, root));
     }
 
-    private BinarySearchTreeNode<AnyType> remove(AnyType element, BinarySearchTreeNode<AnyType> root) {
+    private BinarySearchTreeNode<Element> remove(Element element, BinarySearchTreeNode<Element> root) {
         if (root == null) {
             return null;
         }
@@ -87,11 +90,23 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
     /**
      * Returns the minimum element of the tree
      */
-    public BinarySearchTreeNode<AnyType> findMin() {
-        return findMin(root.getLeftChild());
+    public Element findMin() {
+        /*
+        BinarySearchTreeNode<Element> minElement = findMin(root.getLeftChild());
+        Element element = minElement.getElement();
+        */
+        Element element = levelOrder().get(0); // test
+
+        return element;
     }
 
-    private BinarySearchTreeNode<AnyType> findMin(BinarySearchTreeNode<AnyType> root) {
+    /*
+    public BinarySearchTreeNode<Element> findMin() {
+        return findMin(root.getLeftChild());
+    }
+    */
+
+    private BinarySearchTreeNode<Element> findMin(BinarySearchTreeNode<Element> root) {
         if (root == null) {
             return null;
         } else if (root.getLeftChild() == null) {
@@ -104,12 +119,29 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
     /**
      * Returns the maximum element of the tree
      */
-    public BinarySearchTreeNode<AnyType> findMax() {
+    public Element findMax() {
+        // return findMaxElement();
+        /*
+        BinarySearchTreeNode<Element> maxElement = findMax(root.getLeftChild());
+        Element element = maxElement.getElement();
+        */
+
+        // test
+        ArrayList<Element> list = inOrder();
+        Collections.sort(list);
+        Element element = list.get(list.size()-1);
+
+        return element;
+    }
+
+    /*
+    public BinarySearchTreeNode<Element> findMax() {
         // return findMaxElement();
         return findMax(root);
     }
+    */
 
-    private BinarySearchTreeNode<AnyType> findMax(BinarySearchTreeNode<AnyType> root) {
+    private BinarySearchTreeNode<Element> findMax(BinarySearchTreeNode<Element> root) {
         if (root == null) {
             return null;
         }
@@ -117,7 +149,7 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
         return findMax(root, null);
     }
 
-    private BinarySearchTreeNode<AnyType> findMax(BinarySearchTreeNode<AnyType> root, AnyType element) {
+    private BinarySearchTreeNode<Element> findMax(BinarySearchTreeNode<Element> root, Element element) {
         if(root.getElement().compareTo(element) >= 0 && root.getRightChild() != null){
             root = findMax(root.getRightChild(), root.getElement());
         }
@@ -125,9 +157,9 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
         return root;
     }
 
-    private BinarySearchTreeNode<AnyType> findMaxElement() {
-        ArrayList<AnyType> tree = inOrder();
-        BinarySearchTreeNode<AnyType> node = new BinarySearchTreeNode<>(tree.get(tree.size()));
+    private BinarySearchTreeNode<Element> findMaxElement() {
+        ArrayList<Element> tree = inOrder();
+        BinarySearchTreeNode<Element> node = new BinarySearchTreeNode<>(tree.get(tree.size()));
 
         return node;
     }
@@ -135,7 +167,7 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
     /**
      * Determines if an element is present in the tree
      */
-    public boolean contains(AnyType element) {
+    public boolean contains(Element element) {
         return super.contains(element);
     }
 
@@ -154,8 +186,8 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
     /*
      * Rebalance using an inorder "divide and conquer" array then put into the tree again
      */
-    private void rebalance(BinarySearchTreeNode<AnyType> root) {
-        ArrayList<AnyType> tree = inOrder();
+    private void rebalance(BinarySearchTreeNode<Element> root) {
+        ArrayList<Element> tree = inOrder();
         int center = tree.size() / 2;
 
         // if equal length, select element to the right of center (to fill up from left)
@@ -178,7 +210,7 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
     /*
      * Rebalance using "AVL" rotation of nodes
      */
-    private BinarySearchTreeNode<AnyType> rebalance(BinarySearchTreeNode<AnyType> root, int ALLOWED_IMBALANCE ) {
+    private BinarySearchTreeNode<Element> rebalance(BinarySearchTreeNode<Element> root, int ALLOWED_IMBALANCE ) {
 
         if( root == null )
             return root;
@@ -197,26 +229,26 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> exten
         return root;
     }
 
-    private BinarySearchTreeNode<AnyType> rotateWithLeftChild(BinarySearchTreeNode<AnyType> root) {
-        BinarySearchTreeNode<AnyType> node = root.getLeftChild();
+    private BinarySearchTreeNode<Element> rotateWithLeftChild(BinarySearchTreeNode<Element> root) {
+        BinarySearchTreeNode<Element> node = root.getLeftChild();
         root.addLeftChild(node.getRightChild());
         node.addRightChild(root);
         return node;
     }
 
-    private BinarySearchTreeNode<AnyType> doubleWithLeftChild(BinarySearchTreeNode<AnyType> root) {
+    private BinarySearchTreeNode<Element> doubleWithLeftChild(BinarySearchTreeNode<Element> root) {
         root.addLeftChild(rotateWithLeftChild(root));
         return rotateWithLeftChild( root );
     }
 
-    private BinarySearchTreeNode<AnyType> rotateWithRightChild(BinarySearchTreeNode<AnyType> root) {
-        BinarySearchTreeNode<AnyType> node = root.getRightChild();
+    private BinarySearchTreeNode<Element> rotateWithRightChild(BinarySearchTreeNode<Element> root) {
+        BinarySearchTreeNode<Element> node = root.getRightChild();
         root.addRightChild(node.getLeftChild());
         node.addLeftChild(root);
         return node;
     }
 
-    private BinarySearchTreeNode<AnyType> doubleWithRightChild(BinarySearchTreeNode<AnyType> root) {
+    private BinarySearchTreeNode<Element> doubleWithRightChild(BinarySearchTreeNode<Element> root) {
         root.addRightChild(rotateWithRightChild(root));
         return rotateWithRightChild( root );
     }

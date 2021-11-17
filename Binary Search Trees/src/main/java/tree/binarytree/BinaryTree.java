@@ -12,8 +12,8 @@ import tree.util.QueueInterface;
 
 import java.util.ArrayList;
 
-public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
-    private BinaryTreeNode<AnyType> root;
+public class BinaryTree<Element extends Comparable<? super Element>> {
+    private BinaryTreeNode<Element> root;
 
     public BinaryTree() {
         this.root = null;
@@ -22,14 +22,20 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     /**
      * Returns a reference to the root or null if tree is empty
      */
-    public BinaryTreeNode<AnyType> getRoot() {
+    public Element getRoot() {
+        return root.getElement();
+    }
+
+
+    public BinaryTreeNode<Element> getRootNode() {
         return root;
     }
+
 
     /**
      * Set the root of the tree
      */
-    public void setRoot(BinaryTreeNode<AnyType> root) {
+    public void setRoot(BinaryTreeNode<Element> root) {
         this.root = root;
     }
 
@@ -48,7 +54,7 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
         // return size(root);
     }
 
-    private int size(BinaryTreeNode<AnyType> root){
+    private int size(BinaryTreeNode<Element> root){
         if(root == null) {
             return 0;
         } else {
@@ -59,11 +65,13 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     /**
      * Determines if an element is present in the tree
      */
-    public boolean contains(AnyType element) {
-        return contains(root, element);
+    public boolean contains(Element element) {
+        // boolean result = contains(root, element);
+        boolean result = inOrder().contains(element);       // test method
+        return result;
     }
 
-    private boolean contains(BinaryTreeNode<AnyType> root, AnyType element) {
+    private boolean contains(BinaryTreeNode<Element> root, Element element) {
         if (root == null) {
             return false;
         }
@@ -96,15 +104,15 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     }
     */
 
-    public ArrayList<AnyType> inOrder() {
-        ArrayList<AnyType> tree = new ArrayList<>();
+    public ArrayList<Element> inOrder() {
+        ArrayList<Element> tree = new ArrayList<>();
         if (isEmpty()) {
             return null;
         }
         return traverseInOrder(root, tree);
     }
 
-    private ArrayList<AnyType> traverseInOrder(BinaryTreeNode<AnyType> root, ArrayList<AnyType> tree) {
+    private ArrayList<Element> traverseInOrder(BinaryTreeNode<Element> root, ArrayList<Element> tree) {
         if (root != null) {
             traverseInOrder(root.getLeftChild(), tree);
             tree.add(root.getElement());
@@ -130,15 +138,15 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     }
     */
 
-    public ArrayList<AnyType> preOrder() {
-        ArrayList<AnyType> tree = new ArrayList<>();
+    public ArrayList<Element> preOrder() {
+        ArrayList<Element> tree = new ArrayList<>();
         if (isEmpty()) {
             return null;
         }
         return traversePreOrder(root, tree);
     }
 
-    private ArrayList<AnyType> traversePreOrder(BinaryTreeNode<AnyType> root, ArrayList<AnyType> tree) {
+    private ArrayList<Element> traversePreOrder(BinaryTreeNode<Element> root, ArrayList<Element> tree) {
         if (root != null) {
             tree.add(root.getElement());
             traversePreOrder(root.getLeftChild(), tree);
@@ -164,15 +172,16 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     }
     */
 
-    public ArrayList<AnyType> postOrder() {
-        ArrayList<AnyType> output = new ArrayList<>();
+    public ArrayList<Element> postOrder() {
+        ArrayList<Element> output = new ArrayList<>();
         if (isEmpty()) {
             return null;
         }
+
         return traversePostOrder(root, output);
     }
 
-    private ArrayList<AnyType> traversePostOrder(BinaryTreeNode<AnyType> root, ArrayList<AnyType> output) {
+    private ArrayList<Element> traversePostOrder(BinaryTreeNode<Element> root, ArrayList<Element> output) {
         if (root != null) {
             traversePreOrder(root.getLeftChild(), output);
             traversePreOrder(root.getRightChild(), output);
@@ -198,19 +207,19 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
     }
     */
 
-    public ArrayList<AnyType> levelOrder() {
+    public ArrayList<Element> levelOrder() {
         if (isEmpty()) {
             return null;
         }
 
-        QueueInterface<BinaryTreeNode<AnyType>> fifo = new QueueFIFO<>(41);
-        ArrayList<AnyType> list = new ArrayList<>();
+        QueueInterface<BinaryTreeNode<Element>> fifo = new QueueFIFO<>(41);
+        ArrayList<Element> list = new ArrayList<>();
         fifo.enqueue(root);
 
         return traverseLevelOrder(list, fifo);
     }
 
-    private ArrayList<AnyType> traverseLevelOrder(ArrayList<AnyType> list, QueueInterface<BinaryTreeNode<AnyType>> fifo) {
+    private ArrayList<Element> traverseLevelOrder(ArrayList<Element> list, QueueInterface<BinaryTreeNode<Element>> fifo) {
 
         while (!fifo.isEmpty()) {
             BinaryTreeNode tmpNode = fifo.dequeue();
@@ -221,7 +230,7 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
                 fifo.enqueue(tmpNode.getRightChild());
             }
 
-            list.add((AnyType) tmpNode.getElement());
+            list.add((Element) tmpNode.getElement());
         }
 
         return list;
@@ -235,7 +244,7 @@ public class BinaryTree<AnyType extends Comparable<? super AnyType>> {
         return height(root);
     }
 
-    public int height(BinaryTreeNode<AnyType> root) {
+    public int height(BinaryTreeNode<Element> root) {
         if (root == null) {
             return -1;
         } else {

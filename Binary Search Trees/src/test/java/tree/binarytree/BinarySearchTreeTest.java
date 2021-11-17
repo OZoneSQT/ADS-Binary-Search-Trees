@@ -21,7 +21,6 @@ class BinarySearchTreeTest {
     public ExpectedException exceptionRule = ExpectedException.none();
 
     //TODO Keeps overwriting root, seance root keeps holding the value null
-/*
     @Test
     void insertElement() {
         BinarySearchTree<Integer> tree = null;
@@ -30,7 +29,7 @@ class BinarySearchTreeTest {
             finalTree.size();});
         tree = new BinarySearchTree<>();
         tree.setRoot(new BinarySearchTreeNode<>(99, null, null));
-        System.out.println(tree.getRoot().getElement());
+        System.out.println(tree.getRootNode().getElement());
         assertFalse(tree.contains(1));
         System.out.println(tree.getRoot());
         tree.insertElement(0);
@@ -44,12 +43,9 @@ class BinarySearchTreeTest {
         tree.insertElement(4);
         System.out.println(tree.inOrder());
         tree.insertElement(5);
-        System.out.println(tree.getRoot().getElement());
-
+        System.out.println(tree.getRootNode().getElement());
         assertFalse(tree.isEmpty());
-
         System.out.println(tree.inOrder());
-
         // assertTrue(tree.contains(0));
         // assertTrue(tree.contains(1));
         // assertTrue(tree.contains(2));
@@ -58,14 +54,14 @@ class BinarySearchTreeTest {
         assertTrue(tree.contains(5));
         // assertFalse(tree.contains(6));
     }
-*/
+
     @Test
     void removeElement() {
         BinarySearchTree tree = new BinarySearchTree();
         assertTrue(tree.isEmpty());
         tree.setRoot(new BinarySearchTreeNode(1));
-        System.out.println(tree.getRoot().getElement());
-        tree.getRoot().addLeftChild(new BinarySearchTreeNode(2, new BinarySearchTreeNode(3,
+        System.out.println(tree.getRootNode().getElement());
+        tree.getRootNode().addLeftChild(new BinarySearchTreeNode(2, new BinarySearchTreeNode(3,
                 new BinarySearchTreeNode(4), new BinarySearchTreeNode(5)),
                 new BinarySearchTreeNode(6, new BinarySearchTreeNode(7),
                         new BinarySearchTreeNode(8, new BinarySearchTreeNode(9), null))));
@@ -92,8 +88,8 @@ class BinarySearchTreeTest {
         BinarySearchTree tree = new BinarySearchTree();
         assertTrue(tree.isEmpty());
         tree.setRoot(new BinarySearchTreeNode(1));
-        System.out.println(tree.getRoot().getElement());
-        tree.getRoot().addLeftChild(new BinarySearchTreeNode(2, new BinarySearchTreeNode(3,
+        System.out.println(tree.getRootNode().getElement());
+        tree.getRootNode().addLeftChild(new BinarySearchTreeNode(2, new BinarySearchTreeNode(3,
                 new BinarySearchTreeNode(4), new BinarySearchTreeNode(5)),
                 new BinarySearchTreeNode(6, new BinarySearchTreeNode(7),
                         new BinarySearchTreeNode(8, new BinarySearchTreeNode(9), null))));
@@ -108,8 +104,8 @@ class BinarySearchTreeTest {
         BinarySearchTree tree = new BinarySearchTree();
         assertTrue(tree.isEmpty());
         tree.setRoot(new BinarySearchTreeNode(1));
-        System.out.println(tree.getRoot().getElement());
-        tree.getRoot().addLeftChild(new BinarySearchTreeNode(2, new BinarySearchTreeNode(3,
+        System.out.println(tree.getRootNode().getElement());
+        tree.getRootNode().addLeftChild(new BinarySearchTreeNode(2, new BinarySearchTreeNode(3,
                 new BinarySearchTreeNode(4), new BinarySearchTreeNode(5)),
                 new BinarySearchTreeNode(6, new BinarySearchTreeNode(7),
                         new BinarySearchTreeNode(8, new BinarySearchTreeNode(9), null))));
@@ -124,7 +120,7 @@ class BinarySearchTreeTest {
         BinarySearchTree tree = new BinarySearchTree();
         assertTrue(tree.isEmpty());
         tree.setRoot(new BinarySearchTreeNode(1));
-        tree.getRoot().addLeftChild(new BinarySearchTreeNode(2, new BinarySearchTreeNode(3,
+        tree.getRootNode().addLeftChild(new BinarySearchTreeNode(2, new BinarySearchTreeNode(3,
                 new BinarySearchTreeNode(4), new BinarySearchTreeNode(5)),
                 new BinarySearchTreeNode(6, new BinarySearchTreeNode(7),
                         new BinarySearchTreeNode(8, new BinarySearchTreeNode(9), null))));
@@ -140,7 +136,7 @@ class BinarySearchTreeTest {
         BinarySearchTree tree = new BinarySearchTree();
         assertTrue(tree.isEmpty());
         tree.setRoot(new BinarySearchTreeNode(1));
-        tree.getRoot().addLeftChild(new BinarySearchTreeNode(2, new BinarySearchTreeNode(3,
+        tree.getRootNode().addLeftChild(new BinarySearchTreeNode(2, new BinarySearchTreeNode(3,
                 new BinarySearchTreeNode(4), new BinarySearchTreeNode(5)),
                 new BinarySearchTreeNode(6, new BinarySearchTreeNode(7),
                         new BinarySearchTreeNode(8, new BinarySearchTreeNode(9), null))));
